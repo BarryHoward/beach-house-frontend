@@ -2,7 +2,10 @@ const SERVER = "https://beach-house-backend.herokuapp.com/";
 
 
 
-function OwnerService ($http, $cookies, SERVER) {
+function OwnerService ($http, $cookies) {
+
+  const SERVER = "https://beach-house-backend.herokuapp.com/";
+
 
   this.login = login;
   this.create = create;
@@ -11,6 +14,7 @@ function OwnerService ($http, $cookies, SERVER) {
   this.setOwner = setOwner;
   this.logout = logout;
   this.getHeaders = getHeaders;
+  this.getAllOwners = getAllOwners;
 
   function create (owner) {
     return $http.post(`${SERVER}/owners`, owner);
@@ -45,7 +49,7 @@ function OwnerService ($http, $cookies, SERVER) {
   }
 
   function getAllOwners (){
-    return $http.get(`{SERVER}/owners`)
+    return $http.get(`${SERVER}owners`)
   }
 
   function getHeaders () {
@@ -56,10 +60,10 @@ function OwnerService ($http, $cookies, SERVER) {
   }
 
   function newOwner (info){
-    return $http.post(`{SERVER}/owners`, info)
+    return $http.post(`${SERVER}/owners`, info)
   }
 
 };
 
-OwnerService.$inject = ['$http', '$cookies', 'SERVER'];
+OwnerService.$inject = ['$http', '$cookies'];
 export { OwnerService };

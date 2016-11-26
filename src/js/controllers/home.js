@@ -1,6 +1,6 @@
-function homeController () {
+function HomeController ($state) {
   let vm = this;
 };
 
-homeController.$inject = [];
-export {homeController};
+HomeController.$inject = ['$state'];
+export {HomeController};
