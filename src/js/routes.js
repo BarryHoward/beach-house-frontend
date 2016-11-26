@@ -1,30 +1,45 @@
 function routerConfig ($stateProvider , $urlRouterProvider) {
 
   $stateProvider
-     .state('home', {
+     .state('root', {
        abstract: true,
-       templateUrl: 'templates/home.tpl.html',
-       controller: 'homeController as home'
+       templateUrl: 'templates/root.tpl.html',
      })
 
-     .state('home.add', {
-       url: '/add',
-       templateUrl: 'templates/add.tpl.html',
-       controller: 'addController as add'
-     })
-    .state('home.list', {
-      url: '/list',
-      templateUrl: 'templates/list.tpl.html',
-      controller: 'listController as list'
+     // .state('root.home', {
+     //   url: '/',
+     //   templateUrl: 'templates/home.tpl.html',
+     //   controller: 'HomeController as home'
+     // })
+     .state('root.owners', {
+      url: '/owners',
+      templateUrl: 'templates/ownerList.tpl.html',
+      controller: 'OwnerListController as ownList'
     })
-     .state('home.single', {
-      url: '/single/:id', 
-      templateUrl: 'templates/single.tpl.html',
-      controller: 'singleController as single'
+     .state('root.ownerNew', {
+      url: '/owners/new',
+      templateUrl: 'templates/ownerNew.tpl.html',
+      controller: 'OwnerNewController as ownNew'
+     })
+     .state('root.ownerInfo', {
+      url: '/owners/:id', 
+      templateUrl: 'templates/ownerInfo.tpl.html',
+      controller: 'OwnerInfoController as ownInfo'
      })
 
+     // .state('root.comments', {
+     //  url: '/comments',
+     //  templateUrl: 'templates/comments.tpl.html', 
+     //  controller: 'CommentListController as comList'
+     // })
+     // .state('root.newComment' {
+     //  url: '/comments/new', 
+     //  templateUrl: 'templates/newComment.tpl.html',
+     //  controller: 'CommentNewController as comNew'
+     // })
 
-     $urlRouterProvider.otherwise('/list');
+
+     $urlRouterProvider.otherwise('/');
 };
 
 routerConfig.$inject = ['$stateProvider', '$urlRouterProvider'];

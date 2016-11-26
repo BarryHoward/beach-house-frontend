@@ -1,6 +1,6 @@
-function homeController (serverService) {
+function homeController () {
   let vm = this;
 };
 
-homeController.$inject = ['serverService'];
+homeController.$inject = [];
 export {homeController};
