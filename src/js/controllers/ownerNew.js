@@ -2,10 +2,10 @@ function OwnerNewController (OwnerService, $state) {
   let vm = this;
 
   // vm.addContact = addContact;
-  // vm.totalCheck = totalCheck;
-  // vm.validName = validName;
+  vm.totalCheck = totalCheck;
+  vm.validUserName = validUserName;
   // vm.validPhone = validPhone;
-  // vm.validEmail = validEmail;
+  vm.validEmail = validEmail;
   // vm.validState = validState;
   // vm.validCity = validCity;
   // vm.gotoHome = gotoHome;
@@ -24,7 +24,7 @@ function OwnerNewController (OwnerService, $state) {
 
 			// vm.validName("");
 			vm.validEmail("");
-			vm.validPassword("")
+			// vm.validPassword("")
 			vm.validUserName("")
 			// vm.validPhone("");
 			// vm.validState("");
@@ -37,41 +37,41 @@ function OwnerNewController (OwnerService, $state) {
 	init ();
 
 
-	// function totalCheck(error){
-	// 	if (!vm.error.name && !vm.error.email){
-	// 		vm.click = true;
-	// 		vm.class.submit = "is-success";
+	function totalCheck(error){
+		if (!vm.error.name && !vm.error.email){
+			vm.click = true;
+			vm.class.submit = "is-success";
 			
-	// 	} else {
-	// 		vm.click =false;
-	// 		vm.class.submit = "is-danger";
-	// 	}
+		} else {
+			vm.click =false;
+			vm.class.submit = "is-danger";
+		}
 
-	// }
+	}
 
-	// function validName(name){
-	// 	if (name === ""){
-	// 		vm.error.name = "Must enter a name";
+	function validUserName(name){
+		if (name === ""){
+			vm.error.name = "Must enter a name";
 
-	// 	} else {
-	// 		vm.error.name =null;
+		} else {
+			vm.error.name =null;
 
-	// 	}
-	// 	vm.totalCheck(vm.error);
+		}
+		vm.totalCheck(vm.error);
 
-	// }
-	// function validEmail(email){
-	// 	if (email){
-	// 		if (!email.includes("@")){
-	// 			vm.error.email = "Must enter a valid email address";
-	// 		} else {
-	// 			vm.error.email =null;
-	// 		}
-	// 	} else {
-	// 		vm.error.email = "Email address cannot be left empty";
-	// 	}
-	// 	vm.totalCheck(vm.error);
-	// }
+	}
+	function validEmail(email){
+		if (email){
+			if (!email.includes("@")){
+				vm.error.email = "Must enter a valid email address";
+			} else {
+				vm.error.email =null;
+			}
+		} else {
+			vm.error.email = "Email address cannot be left empty";
+		}
+		vm.totalCheck(vm.error);
+	}
 
 	// function validPhone(number){
 	// 	var numArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-', '(', ')'];
