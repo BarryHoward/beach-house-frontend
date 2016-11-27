@@ -1,6 +1,9 @@
-<h1>Login</h1>
 
-<input type="text" placeholder="username" ng-model="login.username">
-<input type="password" placeholder="password" ng-model="login.password">
 
-<h1>{{login.password}}</h1>
+<input type="text" placeholder="username" ng-model="owner.username">
+<input type="password" placeholder="password" ng-model="owner.password">
+
+<button ng-click="login.login(owner)">Submit</button>
+
+
+<button ng-click="login.logout()">Logout</button>

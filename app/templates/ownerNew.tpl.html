@@ -1,1 +1,27 @@
 <h1>New Owner</h1>
+
+
+<form ng-submit="ownNew.newOwner(ownNew.owner)">
+	<div class="input-container">
+		<input placeholder="Name" type="text" ng-model="ownNew.owner.username" ng-keyup="ownNew.validUserName(ownNew.owner.username)">
+		<i ng-hide="ownNew.error.username" class="fa fa-check"></i>
+		<i ng-show="ownNew.error.username" class="fa fa-warning"></i>
+		<span class="error-text">{{ ownNew.error.username }}</span>
+	</div>
+
+	<div class="input-container">
+		<input placeholder="Password" type="text" ng-model="ownNew.owner.password" ng-keyup="ownNew.validPassword(ownNew.owner.password)">
+		<i ng-hide="ownNew.error.password" class="fa fa-check"></i>
+		<i ng-show="ownNew.error.password" class="fa fa-warning"></i>
+		<span class="error-text">{{ ownNew.error.password}}</span>
+	</div>
+
+	<div class="input-container">
+		<input placeholder="Email" type="text" ng-model="ownNew.owner.email" ng-keyup="ownNew.validEmail(ownNew.owner.email)">
+		<i ng-hide="ownNew.error.email" class="fa fa-check"></i>
+		<i ng-show="ownNew.error.email" class="fa fa-warning"></i>
+		<span class="error-text">{{ ownNew.error.email }}</span>
+	</div>
+
+	<button ng-class="ownNew.class.submit">Submit</button>
+</form>

@@ -1,27 +1,27 @@
-const SERVER = "https://beach-house-backend.herokuapp.com/";
-
-
-
 function OwnerService ($http, $cookies) {
 
   const SERVER = "https://beach-house-backend.herokuapp.com/";
 
 
-  this.login = login;
-  this.create = create;
-  this.isLoggedIn = isLoggedIn;
-  this.isAdmin = isAdmin;
-  this.setOwner = setOwner;
-  this.logout = logout;
-  this.getHeaders = getHeaders;
-  this.getAllOwners = getAllOwners;
+  let vm = this;
+
+  vm.login = login;
+  vm.create = create;
+  vm.isLoggedIn = isLoggedIn;
+  vm.isAdmin = isAdmin;
+  vm.setOwner = setOwner;
+  vm.logout = logout;
+  vm.getHeaders = getHeaders;
+  vm.getAllOwners = getAllOwners;
+  vm.newOwner = newOwner;
+
 
   function create (owner) {
-    return $http.post(`${SERVER}/owners`, owner);
+    return $http.post(`${SERVER}owners`, owner);
   };
 
   function login (owner) {
-    return $http.post(`${SERVER}/login`, owner);
+    return $http.post(`${SERVER}login`, owner);
   }
 
   function isLoggedIn () {
@@ -60,7 +60,13 @@ function OwnerService ($http, $cookies) {
   }
 
   function newOwner (info){
-    return $http.post(`${SERVER}/owners`, info)
+    let req = {
+      url: `${SERVER}owners`,
+      data: info,
+      method: 'POST',
+      headers: vm.getHeaders()
+    };
+    return $http(req)
   }
 
 };

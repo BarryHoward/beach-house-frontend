@@ -1,0 +1,65 @@
+
+
+
+<form class="add-form">
+
+  <div class="column is-gapless is-11">
+    <p class="notification is-success">
+		<button ng-click="add.gotoHome()">
+			<span class="icon">
+				<i class="fa fa-arrow-left"></i>
+			</span>
+		</button>
+		Add Contact</p>
+
+    <div class="input-container">
+	<p class="control has-icon has-icon-right">
+	  <input class="input" placeholder="Name" type="text" ng-model="add.contact.name" ng-keyup="add.validName(add.contact.name)">
+	  <i ng-hide="add.error.name" class="fa fa-check"></i>
+	  <i ng-show="add.error.name" class="fa fa-warning"></i>
+      <span class="error-text" >{{ add.error.name }}</span>
+    </div>
+	</p>
+
+	<div class="input-container">
+	<p class="control has-icon has-icon-right">
+	  <input class="input" placeholder="Email" type="text" ng-model="add.contact.email" ng-keyup="add.validEmail(add.contact.email)">
+	  <i ng-hide="add.error.email" class="fa fa-check"></i>
+	  <i ng-show="add.error.email" class="fa fa-warning"></i>
+      <span class="error-text" >{{ add.error.email }}</span>
+      </div>
+	</p>
+
+	<div class="input-container">
+	<p class="control has-icon has-icon-right">
+	  <input class="input" placeholder="Phone" type="text" ng-model="add.contact.phone" ng-keyup="add.validPhone(add.contact.phone)">
+	  <i ng-hide="add.error.phone" class="fa fa-check"></i>
+	  <i ng-show="add.error.phone" class="fa fa-warning"></i>
+      <span class="error-text" >{{ add.error.phone }}</span>
+      </div>
+	</p>
+
+	<div class="input-container">
+	<p class="control has-icon has-icon-right">
+	  <input class="input" placeholder="City" type="text" ng-model="add.contact.city" ng-keyup="add.validCity(add.contact.city)">
+	  <i ng-hide="add.error.city" class="fa fa-check"></i>
+	  <i ng-show="add.error.city" class="fa fa-warning"></i>
+      <span class="error-text" >{{ add.error.city }}</span>
+      </div>
+	</p>
+
+
+	<div class="input-container">
+	<p class="control has-icon has-icon-right">
+	
+	  <input class="input" placeholder="State" type="text" ng-model="add.contact.state" ng-keyup="add.validState(add.contact.state)">
+	  <i ng-hide="add.error.state" class="fa fa-check"></i>
+	  <i ng-show="add.error.state" class="fa fa-warning"></i>
+      <span class="error-text" >{{ add.error.state }}</span>
+      </div>
+	</p>
+	<div class="button-container">
+		<button ng-class="add.class.submit" class="button" ng-click="add.addContact(add.contact)">Submit</button>
+	</div>
+	</p>
+</form>

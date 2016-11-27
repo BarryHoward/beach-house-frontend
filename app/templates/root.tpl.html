@@ -1,9 +1,11 @@
 <nav>
 	<a href="#/home"><span>Home</span></a>
 	<a href="#/comments"><span>Comment List</span></a>
-	<a href="#/comments/new"><span>Add Comment</span></a>
+	<a href="#/comments/new"><span ng-show="root.loggedIn">Add Comment</span></a>
 	<a href="#/owners"><span>Owners</span></a>
-	<a href="#/owners/new"><span>Add Owner</span></a>
-	<a href="#/login"><span>Login</span></a>
+	<a href="#/owners/new"><span ng-show="root.admin">Add Owner</span></a>
+	<a href="#/login"><span ng-hide="root.loggedIn">Login</span></a>
+	<span ng-show="root.loggedIn" ng-click="root.logout()">Logout</span>
 </nav>
+
 <div class="root-container" ui-view></div>

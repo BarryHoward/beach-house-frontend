@@ -1,44 +1,48 @@
 function OwnerNewController (OwnerService, $state) {
   let vm = this;
 
-  // vm.addContact = addContact;
+  vm.newOwner = newOwner;
   vm.totalCheck = totalCheck;
   vm.validUserName = validUserName;
-  // vm.validPhone = validPhone;
   vm.validEmail = validEmail;
-  // vm.validState = validState;
-  // vm.validCity = validCity;
-  // vm.gotoHome = gotoHome;
+  vm.validPassword = validPassword;
 
-  function newOwner(owner) {
-  	// if (vm.click){
-	  	OwnerService.newOwner(contact).then((resp) => {
-	  		$state.go('home.owners')
-	  	});
-	// }
-  }
 
-  function init(){
-			vm.error = {};
-			vm.class ={};
 
-			// vm.validName("");
-			vm.validEmail("");
-			// vm.validPassword("")
-			vm.validUserName("")
-			// vm.validPhone("");
-			// vm.validState("");
-			// vm.validCity("");
+	function init(){
+		if(!OwnerService.isAdmin()){
+			$state.go('root.owners');
+		}
 
-			vm.click = false;
-			vm.class.submit = "is-danger";
+		vm.error = {};
+		vm.class ={};
+
+		vm.validEmail("");
+		vm.validUserName("")
+		vm.validPassword("")
+
+		vm.click = false;
+		vm.class.submit = "is-danger";
 	}
 
 	init ();
 
 
+	function newOwner(owner) {
+		console.log(vm.click)
+		if (vm.click){
+			OwnerService.newOwner(owner).then((resp) => {
+				console.log(resp)
+				$state.go('root.owners')
+			}, (reject) => {
+				console.log("Only Admins can create Users", reject)
+			})
+		}
+  	}
+
+
 	function totalCheck(error){
-		if (!vm.error.name && !vm.error.email){
+		if (!vm.error.name && !vm.error.email && !vm.error.password){
 			vm.click = true;
 			vm.class.submit = "is-success";
 			
@@ -50,12 +54,10 @@ function OwnerNewController (OwnerService, $state) {
 	}
 
 	function validUserName(name){
-		if (name === ""){
-			vm.error.name = "Must enter a name";
-
+		if (name===""){
+			vm.error.username = "Must enter a name";
 		} else {
-			vm.error.name =null;
-
+			vm.error.username =null;
 		}
 		vm.totalCheck(vm.error);
 
@@ -70,6 +72,18 @@ function OwnerNewController (OwnerService, $state) {
 		} else {
 			vm.error.email = "Email address cannot be left empty";
 		}
+		vm.totalCheck(vm.error);
+	}
+
+	function validPassword(password){
+		if (!password){
+			vm.error.password = "Password must be at least 7 characters long"
+		} else if (password.length<7){
+			vm.error.password = "Password must be at least 7 characters long"
+		} else {
+			vm.error.password = null;
+		}
+
 		vm.totalCheck(vm.error);
 	}
 

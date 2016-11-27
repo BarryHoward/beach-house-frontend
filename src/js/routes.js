@@ -4,6 +4,7 @@ function routerConfig ($stateProvider , $urlRouterProvider) {
      .state('root', {
        abstract: true,
        templateUrl: 'templates/root.tpl.html',
+       controller: 'RootController as root'
      })
 
      .state('root.home', {
@@ -44,7 +45,7 @@ function routerConfig ($stateProvider , $urlRouterProvider) {
      })
 
 
-     $urlRouterProvider.otherwise('/');
+     $urlRouterProvider.otherwise('/home');
 };
 
 routerConfig.$inject = ['$stateProvider', '$urlRouterProvider'];

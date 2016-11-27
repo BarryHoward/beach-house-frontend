@@ -3,6 +3,7 @@ import {routerConfig} from "./routes";
 import 'angular-ui-router';
 import 'angular-cookies';
 
+import {RootController} from "./controllers/root"
 import {HomeController} from "./controllers/home";
 
 import {OwnerInfoController} from './controllers/ownerInfo'
@@ -19,6 +20,7 @@ import {OwnerService} from './services/owner';
 angular
   .module('app', ['ngCookies', 'ui.router'])
   .config(routerConfig)
+  .controller('RootController', RootController)
   .controller('LoginController', LoginController)
   .controller('OwnerInfoController', OwnerInfoController)
   .controller('OwnerListController', OwnerListController)
