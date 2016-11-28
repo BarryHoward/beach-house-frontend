@@ -2,8 +2,8 @@ function CommentListController (OwnerService) {
   	let vm = this;
 
 	function init() {
-	  	OwnerService.getAllOwners().then((resp) => {
-	  		vm.comment = resp.data
+	  	OwnerService.getAllComments().then((resp) => {
+	  		vm.comments = resp.data
 	  	});
   	}
 

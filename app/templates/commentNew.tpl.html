@@ -1,1 +1,50 @@
-<h1>New Comment</h1>
+
+
+
+
+<form name="myForm" ng-submit="comNew.newComment(comNew.comment)">
+
+	<div class="week-of-container">Week of: 
+		<input type="date" ng-model="comNew.comment.week_of" min="{{ comNew.date.min }}" max="{{ comNew.date.max }}" step="7">
+	</div>
+	<div class="true-false-single">
+	    <input type="radio" ng-model="comNew.comment.clean" name="clean" ng-value="true">
+	    Clean
+	    <input type="radio" ng-model="comNew.comment.clean" name="clean" ng-value="false">
+	    Not Clean
+	</div>
+	<div class="true-false-single">
+	    <input type="radio" ng-model="comNew.comment.repair" name="repair" ng-value="true">
+	    Repair
+	    <input type="radio" ng-model="comNew.comment.repair" name="repair" ng-value="false">
+	    No Repair
+	</div>
+	<div class="true-false-single">
+	    <input type="radio" ng-model="comNew.comment.beds" name="beds" ng-value="true">
+	    Beds
+	    <input type="radio" ng-model="comNew.comment.beds" name="beds" ng-value="false">
+	    No Beds
+	</div>
+	<div class="true-false-single">
+	    <input type="radio" ng-model="comNew.comment.towels" name="towels" ng-value="true">
+	    Towels
+	    <input type="radio" ng-model="comNew.comment.towels" name="towels" ng-value="false">
+	    No Towels
+	</div>
+	<div class="true-false-single">
+	    <input type="radio" ng-model="comNew.comment.windows" name="windows" ng-value="true">
+	    Windows
+	    <input type="radio" ng-model="comNew.comment.windows" name="windows" ng-value="false">
+	    No Windows
+	</div>
+	<div class="true-false-single">
+	    <input type="radio" ng-model="comNew.comment.supplies" name="supplies" ng-value="true">
+	    Supplies
+	    <input type="radio" ng-model="comNew.comment.supplies" name="supplies" ng-value="false">
+	    No Supplies
+	</div>
+
+	<textarea ng-model="comNew.comment.content" placeholder="Additional Comments"></textarea>
+
+    <button>Submit</button>
+ </form>

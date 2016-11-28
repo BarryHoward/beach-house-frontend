@@ -6,7 +6,6 @@ function OwnerService ($http, $cookies) {
   let vm = this;
 
   vm.login = login;
-  vm.create = create;
   vm.isLoggedIn = isLoggedIn;
   vm.isAdmin = isAdmin;
   vm.setOwner = setOwner;
@@ -14,11 +13,9 @@ function OwnerService ($http, $cookies) {
   vm.getHeaders = getHeaders;
   vm.getAllOwners = getAllOwners;
   vm.newOwner = newOwner;
+  vm.newComment = newComment;
+  vm.getAllComments = getAllComments;
 
-
-  function create (owner) {
-    return $http.post(`${SERVER}owners`, owner);
-  };
 
   function login (owner) {
     return $http.post(`${SERVER}login`, owner);
@@ -52,6 +49,10 @@ function OwnerService ($http, $cookies) {
     return $http.get(`${SERVER}owners`)
   }
 
+  function getAllComments (){
+    return $http.get(`${SERVER}comments`)
+  }
+
   function getHeaders () {
     let token = $cookies.get('access_token');
     return {
@@ -66,6 +67,16 @@ function OwnerService ($http, $cookies) {
       method: 'POST',
       headers: vm.getHeaders()
     };
+    return $http(req)
+  }
+
+    function newComment (info){
+      let req = {
+        url: `${SERVER}comments`,
+        data: info,
+        method: 'POST',
+        headers: vm.getHeaders()
+      };
     return $http(req)
   }
 

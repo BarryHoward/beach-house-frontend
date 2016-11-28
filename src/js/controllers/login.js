@@ -10,7 +10,9 @@ function LoginController ($state, OwnerService, $rootScope) {
   		OwnerService.setOwner(resp.data);
         $rootScope.$broadcast('loginChange', {});
   		$state.go('root.home')
-  	})
+  	}, (reject) => {
+      console.log("Wrong Username or password")
+    })
   }
 
 
