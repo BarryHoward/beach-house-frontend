@@ -1,11 +1,21 @@
+<div id="pic-banner">
+	<img src="images/banner-pic.png">
+</div>
+
 <nav>
-	<a href="#/home"><span>Home</span></a>
-	<a href="#/comments"><span>Comment List</span></a>
-	<a href="#/comments/new"><span ng-show="root.loggedIn">Add Comment</span></a>
-	<a href="#/owners"><span>Owners</span></a>
-	<a href="#/owners/new"><span ng-show="root.admin">Add Owner</span></a>
-	<a href="#/login"><span ng-hide="root.loggedIn">Login</span></a>
-	<span ng-show="root.loggedIn" ng-click="root.logout()">Logout</span>
+	<span id="left-nav">
+		<a href="#/home"><span>Welcome</span></a>
+		<a href="#/reports"><span>Reports</span></a>
+		<a href="#/reports/new"><span ng-show="root.loggedIn">New Report</span></a>
+		<a href="#/owners"><span>Owners</span></a>
+		<a href="#/schedule"><span>Schedule</span></a>
+		<a href="#/owners/new"><span ng-show="root.admin">Add Owner</span></a>
+	</span>
+	<span id="right-nav">
+		<a href="#/login"><span ng-hide="root.loggedIn">Login</span></a>
+		<span ng-show="root.loggedIn">Logged in as:</span><span>{{root.username}}</span>
+		<span ng-show="root.loggedIn" ng-click="root.logout()">Logout</span>
+	</span>
 </nav>
 
 <div class="root-container" ui-view></div>

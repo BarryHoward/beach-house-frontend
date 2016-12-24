@@ -1,6 +1,6 @@
 import 'datejs';
 
-function CommentNewController ($state, OwnerService) {
+function CommentNewController ($state, $stateParams, OwnerService) {
   let vm = this;
 
   vm.newComment = newComment;
@@ -14,24 +14,14 @@ function CommentNewController ($state, OwnerService) {
 
 		vm.submit = "is-danger";
 		vm.click = false;
-
-		// Date stuff
-		vm.date = {};
-		vm.date.current = Date.today();
-		vm.date.min = Date.today();
-		vm.date.max = Date.today();
-		let currentDay = vm.date.current.getDay()
-		vm.date.min.setDate(vm.date.current.getDate() - currentDay - 14); 
-		vm.date.max.setDate(vm.date.min.getDate() + 21);
-
-		vm.date.min = vm.date.min.toJSON().slice(0,10);
-		vm.date.max = vm.date.max.toJSON().slice(0,10);
-		vm.date.current = vm.date.current.toJSON().slice(0,10);
+		vm.date = Date.parse($stateParams.date)
+		console.log(vm.date)
 	}
 
 	init ();
 
 	function newComment(comment){
+		comment.week_of = vm.date;
 		vm.totalCheck();
 		console.log(vm.click)
 		if (vm.click){
@@ -67,5 +57,5 @@ function CommentNewController ($state, OwnerService) {
 
 };
 
-CommentNewController.$inject = ['$state','OwnerService'];
+CommentNewController.$inject = ['$state', '$stateParams', 'OwnerService'];
 export {CommentNewController};

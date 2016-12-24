@@ -1,5 +1,13 @@
-<h1> Comment List </h1>
+<h1> Reports </h1>
 
-<div ng-repeat="c in comList.comments">
-	<span>{{ c.week_of }}</span>
+<div ng-repeat="report in comList.reportsArray" class="report-container">
+	<div class="report-date">{{report.month}} {{report.day}}</div>
+	<a href="#/reports/{{report.year}}-{{report.month}}-{{report.day}}">
+		<div ng-show="report.exist" class="report-content">
+
+		</div>
+		<div ng-hide="report.exist" class="report-empty">Add report</div>
+	</a>
 </div>
+
+

@@ -34,12 +34,12 @@ function routerConfig ($stateProvider , $urlRouterProvider) {
      })
 
      .state('root.comments', {
-      url: '/comments',
+      url: '/reports',
       templateUrl: 'templates/commentList.tpl.html', 
       controller: 'CommentListController as comList'
      })
      .state('root.newComment', {
-      url: '/comments/new', 
+      url: '/reports/:date', 
       templateUrl: 'templates/commentNew.tpl.html',
       controller: 'CommentNewController as comNew'
      })

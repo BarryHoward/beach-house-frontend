@@ -8,6 +8,7 @@ function OwnerService ($http, $cookies) {
   vm.login = login;
   vm.isLoggedIn = isLoggedIn;
   vm.isAdmin = isAdmin;
+  vm.username = username;
   vm.setOwner = setOwner;
   vm.logout = logout;
   vm.getHeaders = getHeaders;
@@ -17,9 +18,9 @@ function OwnerService ($http, $cookies) {
   vm.getAllComments = getAllComments;
 
 
-  function login (owner) {
-    return $http.post(`${SERVER}login`, owner);
-  }
+
+
+// Cookies ------------------------------------------
 
   function isLoggedIn () {
     return $cookies.get('username') ? true : false;
@@ -27,6 +28,10 @@ function OwnerService ($http, $cookies) {
 
   function isAdmin () {
     return $cookies.get('admin') === 'true';
+  }
+
+  function username(){
+    return $cookies.get('username');
   }
 
   function logout () {
@@ -39,6 +44,12 @@ function OwnerService ($http, $cookies) {
     $cookies.put('username', data.username);
     $cookies.put('access_token', data.access_token);
     $cookies.put('admin', data.admin);
+  }
+
+  // HTTP  ------------------------------
+
+  function login (owner) {
+    return $http.post(`${SERVER}login`, owner);
   }
 
   function getOwner (id) {
@@ -79,6 +90,8 @@ function OwnerService ($http, $cookies) {
       };
     return $http(req)
   }
+
+// ----------------------------------
 
 };
 

@@ -2,7 +2,9 @@ function RootController (OwnerService, $rootScope) {
 	let vm = this;
 	vm.admin = OwnerService.isAdmin();
 	vm.loggedIn = OwnerService.isLoggedIn();
+	vm.username = OwnerService.username();
 	vm.logout = logout;
+
 
 	$rootScope.$on('loginChange', (event, data) => {
 		vm.loggedIn = OwnerService.isLoggedIn();
