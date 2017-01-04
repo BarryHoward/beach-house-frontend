@@ -1,0 +1,46 @@
+
+
+
+
+<form name="myForm" ng-submit="reportNew.newReport(reportNew.report)">
+	<div class="true-false-single">
+	    <input type="radio" ng-model="reportNew.report.clean" name="clean" ng-value="true">
+	    Clean
+	    <input type="radio" ng-model="reportNew.report.clean" name="clean" ng-value="false">
+	    Not Clean
+	</div>
+	<div class="true-false-single">
+	    <input type="radio" ng-model="reportNew.report.repair" name="repair" ng-value="true">
+	    Repair
+	    <input type="radio" ng-model="reportNew.report.repair" name="repair" ng-value="false">
+	    No Repair
+	</div>
+	<div class="true-false-single">
+	    <input type="radio" ng-model="reportNew.report.beds" name="beds" ng-value="true">
+	    Beds
+	    <input type="radio" ng-model="reportNew.report.beds" name="beds" ng-value="false">
+	    No Beds
+	</div>
+	<div class="true-false-single">
+	    <input type="radio" ng-model="reportNew.report.towels" name="towels" ng-value="true">
+	    Towels
+	    <input type="radio" ng-model="reportNew.report.towels" name="towels" ng-value="false">
+	    No Towels
+	</div>
+	<div class="true-false-single">
+	    <input type="radio" ng-model="reportNew.report.windows" name="windows" ng-value="true">
+	    Windows
+	    <input type="radio" ng-model="reportNew.report.windows" name="windows" ng-value="false">
+	    No Windows
+	</div>
+	<div class="true-false-single">
+	    <input type="radio" ng-model="reportNew.report.supplies" name="supplies" ng-value="true">
+	    Supplies
+	    <input type="radio" ng-model="reportNew.report.supplies" name="supplies" ng-value="false">
+	    No Supplies
+	</div>
+
+	<textarea ng-model="reportNew.report.content" placeholder="Additional reports"></textarea>
+
+    <button>Submit</button>
+ </form>

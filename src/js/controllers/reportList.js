@@ -1,21 +1,9 @@
 import 'datejs';
 
-function CommentListController (OwnerService) {
+function ReportListController (OwnerService, $state) {
   	let vm = this;
-
-  	Date.prototype.monthNames = [
-	    "January", "February", "March",
-	    "April", "May", "June",
-	    "July", "August", "September",
-	    "October", "November", "December"
-	];
-
-	Date.prototype.getMonthName = function() {
-	    return this.monthNames[this.getMonth()];
-	};
-	Date.prototype.getShortMonthName = function () {
-	    return this.getMonthName().substr(0, 3);
-	};
+  	vm.gotoSingle = gotoSingle;
+  	vm.toggleComment = toggleComment;
 
 	function init() {
 		// get previous sundays
@@ -31,27 +19,33 @@ function CommentListController (OwnerService) {
 	  		vm.reportsArray[index].day = element.getDate();
 	  	})
 		// get data
-	  	OwnerService.getAllComments().then((resp) => {
+	  	OwnerService.getAllReports().then((resp) => {
 	  		vm.storedReports = resp.data
 	  		vm.reportsArray.forEach(function(arrayElement){
+	  			arrayElement.exist = false;
 	  			vm.storedReports.forEach(function(storedElement){
-	  				if (storedElement.week_of){
-	  					let date = Date.parse(storedElement.week_of.slice(0, -1));
-	  					arrayElement.exist = Date.equals(arrayElement.date, date) || arrayElement.exist
+	  				if (arrayElement.day === storedElement.day && arrayElement.month === storedElement.month && arrayElement.year === storedElement.year){
+	  					arrayElement.exist = true;
 	  					arrayElement = Object.assign(arrayElement, storedElement);
 	  				}
 	  			})
 	  		})
 	  	});
-
-
   	}
 
   	init();
 
 
 
+// #/reports/{{report.year}}-{{report.month}}-{{report.day}}"
 
+	function gotoSingle(report){
+		$state.go('root.newReport', {'date': report.year+'-'+report.month+'-'+report.day})
+	}
+
+	function toggleComment(report){
+		report.clicked = !report.clicked;	
+	}
 
 
 	function previousSundays(first, last){
@@ -67,5 +61,5 @@ function CommentListController (OwnerService) {
 
 };
 
-CommentListController.$inject = ['OwnerService'];
-export {CommentListController};
+ReportListController.$inject = ['OwnerService', '$state'];
+export {ReportListController};

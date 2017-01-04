@@ -48,6 +48,10 @@ nav {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	border: 1px solid black;
+	background: white;
+	padding: 20px;
+	margin: 20px;
 }
 .report-empty{
 	width: 800px;
@@ -58,8 +62,52 @@ nav {
 
 .report-content{
 	width: 800px;
-	height: 100px;
+	// min-height: 100px;
 	background: white;
 	border: 1px solid lightgrey;
+	border-radius: 20px;
+	display: flex;
+	flex-direction: column;
+}
+
+.fa-check-circle{
+	color:green;
+}
+.fa-times-circle{
+	color:red;
+}
+
+.comment{
+	overflow-y: scroll;
+}
+
+.comment-open{
+	max-height: 200px;
+	transition: max-height 0.5s ease-in;
+}
+
+.comment-closed{
+	max-height: 0px;
+	transition: max-height 0.3s ease-out;
+}
+
+.check-box{
+	display: flex;
+	flex-direction: column;
+	margin: 10px;
+	border-right: 1px solid lightgrey;
+	padding: 5px;
+	min-width: 60px;
+	margin: 0px;
+}
+
+.check-container{
+	display: flex;
+	flex-direction: row;
+}
+
+.report-date{
+	border: 1px solid lightgrey;
+	padding: 5px;
 	border-radius: 20px;
 }

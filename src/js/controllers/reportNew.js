@@ -1,50 +1,56 @@
 import 'datejs';
 
-function CommentNewController ($state, $stateParams, OwnerService) {
+function ReportNewController ($state, $stateParams, OwnerService) {
   let vm = this;
 
-  vm.newComment = newComment;
+  vm.newReport = newReport;
   vm.totalCheck = totalCheck;
 
 
 	function init(){
 		if(!OwnerService.isLoggedIn()){
-			$state.go('root.comments');
+			$state.go('root.reports');
 		}
-
 		vm.submit = "is-danger";
 		vm.click = false;
 		vm.date = Date.parse($stateParams.date)
-		console.log(vm.date)
+		vm.report = {};
+  		vm.report.month = vm.date.getShortMonthName();
+  		vm.report.year = vm.date.getFullYear();
+  		vm.report.day = vm.date.getDate();
+
 	}
 
 	init ();
 
-	function newComment(comment){
-		comment.week_of = vm.date;
+	function newReport(report){
 		vm.totalCheck();
-		console.log(vm.click)
+		console.log(vm.report)
 		if (vm.click){
-			OwnerService.newComment(comment).then((resp) => {
+			if (!report.content){
+				report.content = "No comment";
+			}
+			OwnerService.newReport(report).then((resp) => {
 				console.log(resp.data)
-				$state.go('root.comments')
+				$state.go('root.reports')
 			}, (reject) => {
 				console.log(reject)
 			})
 		}
 	}
 
+
 	function totalCheck(){
 		let keys = ['clean', 'repair', 'beds', 'towels', 'windows', 'supplies'];
 		let filled = true;
 
 		for (var i=0; i<keys.length; i++){
-			if (vm.comment[keys[i]] === undefined){
+			if (vm.report[keys[i]] === undefined){
 				filled = false;
 			}
 		}
 
-		if (vm.comment.week_of && filled){
+		if (filled){
 			vm.click = true;
 			vm.submit = "is-success";
 		} else {
@@ -57,5 +63,5 @@ function CommentNewController ($state, $stateParams, OwnerService) {
 
 };
 
-CommentNewController.$inject = ['$state', '$stateParams', 'OwnerService'];
-export {CommentNewController};
+ReportNewController.$inject = ['$state', '$stateParams', 'OwnerService'];
+export {ReportNewController};

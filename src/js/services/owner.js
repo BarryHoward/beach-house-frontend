@@ -14,11 +14,24 @@ function OwnerService ($http, $cookies) {
   vm.getHeaders = getHeaders;
   vm.getAllOwners = getAllOwners;
   vm.newOwner = newOwner;
-  vm.newComment = newComment;
-  vm.getAllComments = getAllComments;
+  vm.newReport = newReport;
+  vm.getAllReports = getAllReports;
 
 
+// Date Stuff --------------------------------------
 
+  Date.prototype.monthNames = [
+      "January", "February", "March",
+      "April", "May", "June",
+      "July", "August", "September",
+      "October", "November", "December"
+  ];
+  Date.prototype.getMonthName = function() {
+      return this.monthNames[this.getMonth()];
+  };
+  Date.prototype.getShortMonthName = function () {
+      return this.getMonthName().substr(0, 3);
+  };
 
 // Cookies ------------------------------------------
 
@@ -60,7 +73,7 @@ function OwnerService ($http, $cookies) {
     return $http.get(`${SERVER}owners`)
   }
 
-  function getAllComments (){
+  function getAllReports (){
     return $http.get(`${SERVER}comments`)
   }
 
@@ -81,7 +94,7 @@ function OwnerService ($http, $cookies) {
     return $http(req)
   }
 
-    function newComment (info){
+    function newReport (info){
       let req = {
         url: `${SERVER}comments`,
         data: info,

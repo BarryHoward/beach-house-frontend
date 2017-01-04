@@ -10,8 +10,8 @@ import {OwnerInfoController} from './controllers/ownerInfo'
 import {OwnerListController} from './controllers/ownerList'
 import {OwnerNewController} from './controllers/ownerNew'
 
-import {CommentNewController} from './controllers/commentNew'
-import {CommentListController} from './controllers/commentList'
+import {ReportNewController} from './controllers/reportNew'
+import {ReportListController} from './controllers/reportList'
 
 import {LoginController} from './controllers/login'
 import {OwnerService} from './services/owner';
@@ -25,8 +25,8 @@ angular
   .controller('OwnerInfoController', OwnerInfoController)
   .controller('OwnerListController', OwnerListController)
   .controller('OwnerNewController', OwnerNewController)
-  .controller('CommentNewController', CommentNewController)
-  .controller('CommentListController', CommentListController)
+  .controller('ReportNewController', ReportNewController)
+  .controller('ReportListController', ReportListController)
   .controller('HomeController', HomeController)
 
   .service('OwnerService', OwnerService)

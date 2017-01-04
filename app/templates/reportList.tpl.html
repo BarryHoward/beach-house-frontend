@@ -1,0 +1,46 @@
+<h1> Reports </h1>
+
+<div ng-repeat="report in reportList.reportsArray" class="report-container">
+	<div class="report-date">
+		<div class="week-of">Week Of:</div>
+		<div class="date-week">{{report.month}} {{report.day}}</div>
+	</div>
+		<button ng-click="reportList.toggleComment(report)" ng-show="report.exist" class="report-content">
+			<div class="check-container">
+				<div class="check-box">Clean
+					<span ng-show="report.clean"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
+					<span ng-hide="report.clean"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+				</div>
+				<div class="check-box">Repair
+					<span ng-show="report.repair"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
+					<span ng-hide="report.repair"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+				</div>
+				<div class="check-box">Beds
+					<span ng-show="report.beds"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
+					<span ng-hide="report.beds"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+				</div>
+				<div class="check-box">Towels
+					<span ng-show="report.towels"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
+					<span ng-hide="report.towels"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+				</div>
+				<div class="check-box">Windows
+					<span ng-show="report.windows"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
+					<span ng-hide="report.windows"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+				</div>
+				<div class="check-box">Supplies
+					<span ng-show="report.supplies"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
+					<span ng-hide="report.supplies"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+				</div>
+			</div>
+			<div class="comment" ng-class="{'comment-open': report.clicked, 'comment-closed': !report.clicked}">
+				<span>{{report.content}}</span>
+			</div>
+		</button>
+
+
+		<button ng-click="reportList.gotoSingle(report)" ng-hide="report.exist" class="report-empty">
+			Add report!
+		</button>
+</div>
+
+

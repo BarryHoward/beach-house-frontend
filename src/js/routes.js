@@ -33,19 +33,19 @@ function routerConfig ($stateProvider , $urlRouterProvider) {
       controller: 'LoginController as login'
      })
 
-     .state('root.comments', {
+     .state('root.reports', {
       url: '/reports',
-      templateUrl: 'templates/commentList.tpl.html', 
-      controller: 'CommentListController as comList'
+      templateUrl: 'templates/reportList.tpl.html', 
+      controller: 'ReportListController as reportList'
      })
-     .state('root.newComment', {
+     .state('root.newReport', {
       url: '/reports/:date', 
-      templateUrl: 'templates/commentNew.tpl.html',
-      controller: 'CommentNewController as comNew'
+      templateUrl: 'templates/reportNew.tpl.html',
+      controller: 'ReportNewController as reportNew'
      })
 
 
-     $urlRouterProvider.otherwise('/home');
+     // $urlRouterProvider.otherwise('/home');
 };
 
 routerConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
