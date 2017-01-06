@@ -20,6 +20,7 @@ function OwnerService ($http, $cookies) {
   vm.deleteReport = deleteReport;
 
 
+
 // Date Stuff --------------------------------------
 
   Date.prototype.monthNames = [

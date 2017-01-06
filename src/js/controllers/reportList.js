@@ -1,6 +1,6 @@
 import 'datejs';
 
-function ReportListController (OwnerService, $state, $timeout) {
+function ReportListController (OwnerService, $state, $timeout, $rootScope) {
   	let vm = this;
   	vm.gotoSingle = gotoSingle;
   	vm.toggleComment = toggleComment;
@@ -47,6 +47,13 @@ function ReportListController (OwnerService, $state, $timeout) {
   	init();
 
 
+	$rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState) =>{
+	    console.log(toState.name)
+	    if (fromState.name == "root.reports.newReport"){
+	    	init();
+	   	}
+	  })
+
 
 // #/reports/{{report.year}}-{{report.month}}-{{report.day}}"
 
@@ -81,5 +88,5 @@ function ReportListController (OwnerService, $state, $timeout) {
 
 };
 
-ReportListController.$inject = ['OwnerService', '$state', '$timeout'];
+ReportListController.$inject = ['OwnerService', '$state', '$timeout', '$rootScope'];
 export {ReportListController};

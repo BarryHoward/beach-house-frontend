@@ -32,6 +32,7 @@ function ReportNewController ($state, $stateParams, OwnerService) {
 
 	init ();
 
+
 	function newReport(report){
 		vm.report = report;
 		vm.totalCheck();

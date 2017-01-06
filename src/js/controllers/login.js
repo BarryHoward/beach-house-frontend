@@ -15,6 +15,10 @@ function LoginController ($state, OwnerService, $rootScope) {
     })
   }
 
+  // $rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState) =>{
+  //   vm.prevState=fromState.name;
+  // })
+
 
 };
 
