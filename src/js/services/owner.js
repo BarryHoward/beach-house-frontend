@@ -16,6 +16,7 @@ function OwnerService ($http, $cookies) {
   vm.newOwner = newOwner;
   vm.newReport = newReport;
   vm.getAllReports = getAllReports;
+  vm.getReport = getReport;
   vm.deleteReport = deleteReport;
 
 
@@ -76,6 +77,10 @@ function OwnerService ($http, $cookies) {
 
   function getAllReports (){
     return $http.get(`${SERVER}comments`)
+  }
+
+  function getReport(date){
+    return $http.get(`${SERVER}comments/${date}`)
   }
 
   function getHeaders () {

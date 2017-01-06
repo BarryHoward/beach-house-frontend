@@ -1,10 +1,11 @@
 import 'datejs';
 
-function ReportListController (OwnerService, $state) {
+function ReportListController (OwnerService, $state, $timeout) {
   	let vm = this;
   	vm.gotoSingle = gotoSingle;
   	vm.toggleComment = toggleComment;
   	vm.deleteReport = deleteReport;
+  	vm.loading=false;
 
 	function init() {
 		// get previous sundays
@@ -20,7 +21,13 @@ function ReportListController (OwnerService, $state) {
 	  		vm.reportsArray[index].day = element.getDate();
 	  	})
 		// get data
+		let timeoutId =  $timeout(function(){
+							vm.loading=true;
+							}, 1000);
 	  	OwnerService.getAllReports().then((resp) => {
+	  		$timeout.cancel(timeoutId);
+	  		console.log(resp.data)
+	  		vm.loading=false;
 	  		vm.storedReports = resp.data
 	  		vm.reportsArray.forEach(function(arrayElement){
 	  			arrayElement.exist = false;
@@ -31,6 +38,9 @@ function ReportListController (OwnerService, $state) {
 	  				}
 	  			})
 	  		})
+	  	}, (reject) =>{
+	  		vm.loading=false;
+	  		console.log(reject)
 	  	});
   	}
 
@@ -41,7 +51,6 @@ function ReportListController (OwnerService, $state) {
 // #/reports/{{report.year}}-{{report.month}}-{{report.day}}"
 
 	function gotoSingle(report){
-		vm.modal = report;
 		$state.go('root.reports.newReport', {'date': report.year+'-'+report.month+'-'+report.day})
 	}
 
@@ -72,5 +81,5 @@ function ReportListController (OwnerService, $state) {
 
 };
 
-ReportListController.$inject = ['OwnerService', '$state'];
+ReportListController.$inject = ['OwnerService', '$state', '$timeout'];
 export {ReportListController};

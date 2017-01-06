@@ -39,13 +39,13 @@ function routerConfig ($stateProvider , $urlRouterProvider) {
       controller: 'ReportListController as reportList'
      })
      .state('root.reports.newReport', {
-      url: '/reports/:date', 
+      url: '/:date', 
       templateUrl: 'templates/reportNew.tpl.html',
       controller: 'ReportNewController as reportNew'
      })
 
 
-     // $urlRouterProvider.otherwise('/home');
+     $urlRouterProvider.otherwise('/home');
 };
 
 routerConfig.$inject = ['$stateProvider', '$urlRouterProvider'];

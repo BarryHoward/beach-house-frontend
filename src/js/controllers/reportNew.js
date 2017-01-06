@@ -10,7 +10,7 @@ function ReportNewController ($state, $stateParams, OwnerService) {
 
 	function init(){
 		if(!OwnerService.isLoggedIn()){
-			$state.go('root.reports');
+			$state.go('root.login');
 		}
 		vm.submit = "is-danger";
 		vm.click = false;
@@ -20,6 +20,14 @@ function ReportNewController ($state, $stateParams, OwnerService) {
   		vm.report.year = vm.date.getFullYear();
   		vm.report.day = vm.date.getDate();
 
+  		OwnerService.getReport($stateParams.date).then((resp) => {
+  			console.log(resp.data)
+  			vm.report = resp.data;
+  			vm.totalCheck();
+  		}, (reject) =>{
+  			console.log(reject)
+  		})
+
 	}
 
 	init ();
@@ -27,7 +35,6 @@ function ReportNewController ($state, $stateParams, OwnerService) {
 	function newReport(report){
 		vm.report = report;
 		vm.totalCheck();
-		console.log(vm.click)
 		if (vm.click){
 			if (!report.content){
 				report.content = "No comment";
@@ -36,7 +43,6 @@ function ReportNewController ($state, $stateParams, OwnerService) {
 				report.id = resp.data.id;
 				report.users_id = resp.data.users_id;
 				report.exist = true;
-				console.log(resp.data, report)
 				$state.go('root.reports')
 			}, (reject) => {
 				console.log(reject)

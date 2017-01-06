@@ -9,6 +9,7 @@ function RootController (OwnerService, $rootScope) {
 	$rootScope.$on('loginChange', (event, data) => {
 		vm.loggedIn = OwnerService.isLoggedIn();
 		vm.admin = OwnerService.isAdmin();
+		vm.username = OwnerService.username();
 	});
 
 	function logout(){

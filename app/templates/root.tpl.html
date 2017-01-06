@@ -11,8 +11,9 @@
 		<a href="#/owners/new"><span ng-show="root.admin">Add Owner</span></a>
 	</span>
 	<span id="right-nav">
-		<a href="#/login"><span ng-hide="root.loggedIn">Login</span></a>
-		<span ng-show="root.loggedIn">Logged in as:</span><span>{{root.username}}</span>
+		<span ng-hide="root.loggedIn"><a href="#/login">Login</a></span>
+		<span ng-show="root.loggedIn">Logged in as:</span>
+		<span ng-show="root.loggedIn">{{root.username}}</span>
 		<span ng-show="root.loggedIn" ng-click="root.logout()">Logout</span>
 	</span>
 </nav>

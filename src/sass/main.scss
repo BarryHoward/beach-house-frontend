@@ -13,6 +13,10 @@ a {
 	color:white;
 }
 
+textarea {
+	resize: none;
+}
+
 #pic-banner{
 	margin: 0px;
 	padding: 0px;
@@ -30,6 +34,8 @@ nav {
 	align-items: center;
 	height: 40px;
 	color:white;
+	padding-left: 10px;
+	padding-right: 10px;
 
 	background: #f3e2c7; /* Old browsers */
 	background: #f3e2c7; /* Old browsers */
@@ -179,3 +185,17 @@ nav {
 	border-radius: 10px;
 	padding: 20px;
 }
+
+#modal-loading{
+	display: flex;
+	justify-content: center;
+	background: transparent;
+	img{
+		padding: 20px;
+		width: 100px;
+		height: 100px;
+		background: white;
+		border-radius: 100%;
+	}
+}
+
