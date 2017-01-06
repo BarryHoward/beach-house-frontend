@@ -16,6 +16,7 @@ function OwnerService ($http, $cookies) {
   vm.newOwner = newOwner;
   vm.newReport = newReport;
   vm.getAllReports = getAllReports;
+  vm.deleteReport = deleteReport;
 
 
 // Date Stuff --------------------------------------
@@ -94,14 +95,23 @@ function OwnerService ($http, $cookies) {
     return $http(req)
   }
 
-    function newReport (info){
-      let req = {
-        url: `${SERVER}comments`,
-        data: info,
-        method: 'POST',
-        headers: vm.getHeaders()
-      };
+  function newReport (info){
+    let req = {
+      url: `${SERVER}comments`,
+      data: info,
+      method: 'POST',
+      headers: vm.getHeaders()
+    };
     return $http(req)
+  }
+
+  function deleteReport (id){
+    let req = {
+      url: `${SERVER}comments/${id}`,
+      method: 'DELETE',
+      headers: vm.getHeaders()
+    };
+    return $http(req);
   }
 
 // ----------------------------------

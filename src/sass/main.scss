@@ -46,28 +46,17 @@ nav {
 //  Reports
 .report-container{
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: space-between;
 	border: 1px solid black;
 	background: white;
 	padding: 20px;
 	margin: 20px;
+	min-height: 150px;
 }
 .report-empty{
-	width: 800px;
-	height: 100px;
 	background: lightgrey;
 	border-radius: 20px;
-}
-
-.report-content{
-	width: 800px;
-	// min-height: 100px;
-	background: white;
-	border: 1px solid lightgrey;
-	border-radius: 20px;
-	display: flex;
-	flex-direction: column;
 }
 
 .fa-check-circle{
@@ -78,36 +67,115 @@ nav {
 }
 
 .comment{
+	padding: 10px;
 	overflow-y: scroll;
+	overflow-x: hidden; 
+	border: 1px solid lightgrey;
+	border-radius: 10px;
+	height: 100px;
 }
 
-.comment-open{
-	max-height: 200px;
-	transition: max-height 0.5s ease-in;
+.bottom-open{
+	max-height: 100px;
+	transition: max-height 0.2s ease-in;
 }
 
-.comment-closed{
+.bottom-closed{
 	max-height: 0px;
-	transition: max-height 0.3s ease-out;
+	transition: max-height 0.1s ease-out;
 }
 
 .check-box{
 	display: flex;
 	flex-direction: column;
 	margin: 10px;
+	align-items: center;
+	justify-content: space-around;
 	border-right: 1px solid lightgrey;
-	padding: 5px;
-	min-width: 60px;
+	width: 16.6666%;
 	margin: 0px;
+	font-size: 12pt;
+
+		&:last-child{
+			border: none;
+	}
+
 }
 
 .check-container{
 	display: flex;
 	flex-direction: row;
+	border: 1px solid lightgrey;
+	border-radius: 10px;
+	justify-content: space-around;
+
+
 }
 
 .report-date{
 	border: 1px solid lightgrey;
 	padding: 5px;
-	border-radius: 20px;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	font-size: 18pt;
+}
+
+.report-top{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 10px;
+	height: 130px;
+}
+
+.report-bottom{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	overflow: hidden;
+	padding: 0px 10px;
+}
+
+.report-buttons{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+
+	button{
+		height: 40px;
+		border: none;
+		border-radius: 10px;
+		color: white;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		font-size: 12pt;
+		font-weight: bolder;
+	}
+}
+
+.update-button{
+	background: #01D1B2;
+}
+
+.delete-button{
+	background: red;
+}
+
+
+.report-right{
+	width: 60%;
+}
+
+.report-left{
+	width: 20%;
+}
+
+.modal-content{
+	background: white;
+	border-radius: 10px;
+	padding: 20px;
 }

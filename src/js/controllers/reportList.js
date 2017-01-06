@@ -4,6 +4,7 @@ function ReportListController (OwnerService, $state) {
   	let vm = this;
   	vm.gotoSingle = gotoSingle;
   	vm.toggleComment = toggleComment;
+  	vm.deleteReport = deleteReport;
 
 	function init() {
 		// get previous sundays
@@ -40,7 +41,8 @@ function ReportListController (OwnerService, $state) {
 // #/reports/{{report.year}}-{{report.month}}-{{report.day}}"
 
 	function gotoSingle(report){
-		$state.go('root.newReport', {'date': report.year+'-'+report.month+'-'+report.day})
+		vm.modal = report;
+		$state.go('root.reports.newReport', {'date': report.year+'-'+report.month+'-'+report.day})
 	}
 
 	function toggleComment(report){
@@ -57,6 +59,15 @@ function ReportListController (OwnerService, $state) {
 		return sunArray;
 	}
 
+	function deleteReport(report){
+		OwnerService.deleteReport(report.id).then((resp) => {
+				report.exist = false;
+				console.log(resp.data)
+			}, (reject) => {
+				console.log(reject)
+			})
+
+	}
 
 
 };

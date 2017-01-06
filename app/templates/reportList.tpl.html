@@ -1,46 +1,62 @@
 <h1> Reports </h1>
 
-<div ng-repeat="report in reportList.reportsArray" class="report-container">
-	<div class="report-date">
-		<div class="week-of">Week Of:</div>
-		<div class="date-week">{{report.month}} {{report.day}}</div>
+<div ng-repeat="report in reportList.reportsArray" class="report-container"  >
+	<div class="report-top" ng-show="report.exist" ng-click="reportList.toggleComment(report)">
+		<div class="report-date report-left">
+			<div class="date-month">{{report.month}}.</div>
+			<div class="date-week">{{report.day}}</div>
+		</div>
+		<div class="check-container report-right">
+			<div class="check-box">Clean
+				<span ng-show="report.clean"><i class="fa-2x fa fa-check-circle" aria-hidden="true"></i></span>
+				<span ng-hide="report.clean"><i class="fa-2x fa fa-times-circle" aria-hidden="true"></i></span>
+			</div>
+			<div class="check-box">Repair
+				<span ng-show="report.repair"><i class="fa-2x fa fa-check-circle" aria-hidden="true"></i></span>
+				<span ng-hide="report.repair"><i class="fa-2x fa fa-times-circle" aria-hidden="true"></i></span>
+			</div>
+			<div class="check-box">Beds
+				<span ng-show="report.beds"><i class="fa-2x fa fa-check-circle" aria-hidden="true"></i></span>
+				<span ng-hide="report.beds"><i class="fa-2x fa fa-times-circle" aria-hidden="true"></i></span>
+			</div>
+			<div class="check-box">Towels
+				<span ng-show="report.towels"><i class="fa-2x fa fa-check-circle" aria-hidden="true"></i></span>
+				<span ng-hide="report.towels"><i class="fa-2x fa fa-times-circle" aria-hidden="true"></i></span>
+			</div>
+			<div class="check-box">Windows
+				<span ng-show="report.windows"><i class="fa-2x fa fa-check-circle" aria-hidden="true"></i></span>
+				<span ng-hide="report.windows"><i class="fa-2x fa fa-times-circle" aria-hidden="true"></i></span>
+			</div>
+			<div class="check-box">Supplies
+				<span ng-show="report.supplies"><i class="fa-2x fa fa-check-circle" aria-hidden="true"></i></span>
+				<span ng-hide="report.supplies"><i class="fa-2x fa fa-times-circle" aria-hidden="true"></i></span>
+			</div>
+		</div>
 	</div>
-		<button ng-click="reportList.toggleComment(report)" ng-show="report.exist" class="report-content">
-			<div class="check-container">
-				<div class="check-box">Clean
-					<span ng-show="report.clean"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
-					<span ng-hide="report.clean"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
-				</div>
-				<div class="check-box">Repair
-					<span ng-show="report.repair"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
-					<span ng-hide="report.repair"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
-				</div>
-				<div class="check-box">Beds
-					<span ng-show="report.beds"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
-					<span ng-hide="report.beds"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
-				</div>
-				<div class="check-box">Towels
-					<span ng-show="report.towels"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
-					<span ng-hide="report.towels"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
-				</div>
-				<div class="check-box">Windows
-					<span ng-show="report.windows"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
-					<span ng-hide="report.windows"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
-				</div>
-				<div class="check-box">Supplies
-					<span ng-show="report.supplies"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
-					<span ng-hide="report.supplies"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
-				</div>
-			</div>
-			<div class="comment" ng-class="{'comment-open': report.clicked, 'comment-closed': !report.clicked}">
-				<span>{{report.content}}</span>
-			</div>
-		</button>
+	<div class="report-bottom" ng-class="{'bottom-open': report.clicked, 'bottom-closed': !report.clicked}" ng-show="report.exist">
+		<div class="report-buttons report-left">
+			<button class="update-button" ng-click="reportList.gotoSingle(report)">
+				Update
+				<i class="fa-2x fa fa-wrench"></i>
+			</button>
+			<button class="delete-button" ng-click="reportList.deleteReport(report)">
+				Delete
+				<i class="fa-2x fa fa-times"></i>
+			</button>
+		</div>
+		<div class="comment report-right">
+			<span>{{report.content}}</span>
+		</div>
+	</div>
 
-
-		<button ng-click="reportList.gotoSingle(report)" ng-hide="report.exist" class="report-empty">
-			Add report!
-		</button>
+	<div class="report-top" ng-click="reportList.toggleComment(report)" ng-hide="report.exist">
+		<div class="report-date report-left">
+			<div class="week-of">{{report.month}}.</div>
+			<div class="date-week">{{report.day}}</div>
+		</div>
+		<button ng-click="reportList.gotoSingle(report)" ng-hide="report.exist" class="report-right report-empty">Add a Report!</button>
+	</div>
 </div>
 
 
+<div class="single-container" ui-view></div>

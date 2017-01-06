@@ -38,7 +38,7 @@ function routerConfig ($stateProvider , $urlRouterProvider) {
       templateUrl: 'templates/reportList.tpl.html', 
       controller: 'ReportListController as reportList'
      })
-     .state('root.newReport', {
+     .state('root.reports.newReport', {
       url: '/reports/:date', 
       templateUrl: 'templates/reportNew.tpl.html',
       controller: 'ReportNewController as reportNew'

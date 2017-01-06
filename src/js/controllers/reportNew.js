@@ -5,6 +5,7 @@ function ReportNewController ($state, $stateParams, OwnerService) {
 
   vm.newReport = newReport;
   vm.totalCheck = totalCheck;
+  vm.gotoList = gotoList;
 
 
 	function init(){
@@ -24,14 +25,18 @@ function ReportNewController ($state, $stateParams, OwnerService) {
 	init ();
 
 	function newReport(report){
+		vm.report = report;
 		vm.totalCheck();
-		console.log(vm.report)
+		console.log(vm.click)
 		if (vm.click){
 			if (!report.content){
 				report.content = "No comment";
 			}
 			OwnerService.newReport(report).then((resp) => {
-				console.log(resp.data)
+				report.id = resp.data.id;
+				report.users_id = resp.data.users_id;
+				report.exist = true;
+				console.log(resp.data, report)
 				$state.go('root.reports')
 			}, (reject) => {
 				console.log(reject)
@@ -59,6 +64,11 @@ function ReportNewController ($state, $stateParams, OwnerService) {
 		}
 
 	}
+
+	function gotoList(){
+		$state.go('root.reports');
+	}
+	
 
 
 };
