@@ -2,66 +2,110 @@
   <div class="modal-background"></div>
   <div class="modal-content modal-report">
   	<form name="myForm" ng-submit="reportNew.newReport(reportNew.report)">
-  		<div class="intro">
-  			For each week of the year, owners/users will please fill out comments section for the week(s) the home was used. This will assist/inform all owners of potential issues and/or chronic problems. If a call is made for maintenance or missing supplies, please note in comments section below:
-		<div class="true-false-single">
-			<div class="prompt">
-				The home was clean upon arrival. If no, please comment below.
+  		<div class="new-report-container">
+  			<div class="new-title">
+  			Report for {{reportNew.report.month}} {{reportNew.report.day}}, {{reportNew.report.year}}
+  			</div>
+	  		<div class="intro">
+	  			
+	  			For each week of the year, owners/users will please fill out comments section for the week(s) the home was used. This will assist/inform all owners of potential issues and/or chronic problems. If a call is made for maintenance or missing supplies, please note in comments section below:
+	  		</div>
+			<div class="true-false-single">
+				<div class="prompt">
+					The home was clean upon arrival. If no, please comment below.
+				</div>
+				<div class="radios-container">
+					<div>
+					    <input type="radio" ng-change="reportNew.totalCheck()" ng-model="reportNew.report.clean" name="clean" ng-value="true">
+					    Yes
+					</div>
+					<div>
+					    <input type="radio" ng-change="reportNew.totalCheck()" ng-model="reportNew.report.clean" name="clean" ng-value="false">
+					    No
+					</div>
+				</div>
 			</div>
-		    <input type="radio" ng-change="reportNew.totalCheck()" ng-model="reportNew.report.clean" name="clean" ng-value="true">
-		    Clean
-		    <input type="radio" ng-change="reportNew.totalCheck()" ng-model="reportNew.report.clean" name="clean" ng-value="false">
-		    Not Clean
-		</div>
-		<div class="true-false-single">
-			<div class="prompt">
-				No repairs are needed for any items. If no, please estimate (e.g. – TV needs repairs; oven does not work; sink is leaking; ice maker does not work, etc.)
+			<div class="true-false-single">
+				<div class="prompt">
+					No repairs are needed for any items. If no, please estimate (e.g. – TV needs repairs; oven does not work; sink is leaking; ice maker does not work, etc.)
+				</div>
+				<div class="radios-container">
+					<div>
+					    <input type="radio" ng-change="reportNew.totalCheck()" ng-model="reportNew.report.repair" name="repair" ng-value="true">
+					    Yes
+				    </div>
+				    <div>
+					    <input type="radio" ng-change="reportNew.totalCheck()" ng-model="reportNew.report.repair" name="repair" ng-value="false">
+					    No
+					</div>
+				</div>
 			</div>
-		    <input type="radio" ng-change="reportNew.totalCheck()" ng-model="reportNew.report.repair" name="repair" ng-value="true">
-		    Repair
-		    <input type="radio" ng-change="reportNew.totalCheck()" ng-model="reportNew.report.repair" name="repair" ng-value="false">
-		    No Repair
-		</div>
-		<div class="true-false-single">
-			<div class="prompt">
-				All beds were made and bathrooms were properly cleaned. If no, please comment below.
+			<div class="true-false-single">
+				<div class="prompt">
+					All beds were made and bathrooms were properly cleaned. If no, please comment below.
+				</div>
+				<div class="radios-container">
+					<div>
+					    <input type="radio" ng-change="reportNew.totalCheck()" ng-model="reportNew.report.beds" name="beds" ng-value="true">
+					    Yes
+					</div>
+					<div>
+					    <input type="radio" ng-change="reportNew.totalCheck()" ng-model="reportNew.report.beds" name="beds" ng-value="false">
+					    No
+					</div>
+				</div>
 			</div>
-		    <input type="radio" ng-change="reportNew.totalCheck()" ng-model="reportNew.report.beds" name="beds" ng-value="true">
-		    Beds
-		    <input type="radio" ng-change="reportNew.totalCheck()" ng-model="reportNew.report.beds" name="beds" ng-value="false">
-		    No Beds
-		</div>
-		<div class="true-false-single">
-			<div class="prompt">
-				Sufficient Towels and Linens were available. If no, please comment below.
+			<div class="true-false-single">
+				<div class="prompt">
+					Sufficient Towels and Linens were available. If no, please comment below.
+				</div>
+				<div class="radios-container">
+					<div>
+					    <input type="radio" ng-change="reportNew.totalCheck()" ng-model="reportNew.report.towels" name="towels" ng-value="true">
+					    Yes
+					</div>
+					<div>
+					    <input type="radio" ng-change="reportNew.totalCheck()" ng-model="reportNew.report.towels" name="towels" ng-value="false">
+					    No
+					</div>
+				</div>
 			</div>
-		    <input type="radio" ng-change="reportNew.totalCheck()" ng-model="reportNew.report.towels" name="towels" ng-value="true">
-		    Towels
-		    <input type="radio" ng-change="reportNew.totalCheck()" ng-model="reportNew.report.towels" name="towels" ng-value="false">
-		    No Towels
-		</div>
-		<div class="true-false-single">
-			<div class="prompt">
-				All windows to home were closed upon arrival. If no, please comment below.
+			<div class="true-false-single">
+				<div class="prompt">
+					All windows to home were closed upon arrival. If no, please comment below.
+				</div>
+				<div class="radios-container">
+					<div>
+					    <input type="radio" ng-change="reportNew.totalCheck()" ng-model="reportNew.report.windows" name="windows" ng-value="true">
+					    Yes
+				    </div>
+				    <div>
+					    <input type="radio" ng-change="reportNew.totalCheck()" ng-model="reportNew.report.windows" name="windows" ng-value="false">
+					    No
+					</div>
+				</div>
 			</div>
-		    <input type="radio" ng-change="reportNew.totalCheck()" ng-model="reportNew.report.windows" name="windows" ng-value="true">
-		    Windows
-		    <input type="radio" ng-change="reportNew.totalCheck()" ng-model="reportNew.report.windows" name="windows" ng-value="false">
-		    No Windows
-		</div>
-		<div class="true-false-single">
-			<div class="prompt">
-				All necessary supplies were available upon arrival (toilet paper, etc.). If no, please comment below.
+			<div class="true-false-single">
+				<div class="prompt">
+					All necessary supplies were available upon arrival (toilet paper, etc.). If no, please comment below.
+				</div>
+				<div class="radios-container">
+				    <div>
+					    <input type="radio" ng-change="reportNew.totalCheck()" ng-model="reportNew.report.supplies" name="supplies" ng-value="true">
+					    Yes
+					</div>
+					<div>
+					    <input type="radio" ng-change="reportNew.totalCheck()" ng-model="reportNew.report.supplies" name="supplies" ng-value="false">
+					    No
+					</div>
+				</div>
 			</div>
-		    <input type="radio" ng-change="reportNew.totalCheck()" ng-model="reportNew.report.supplies" name="supplies" ng-value="true">
-		    Supplies
-		    <input type="radio" ng-change="reportNew.totalCheck()" ng-model="reportNew.report.supplies" name="supplies" ng-value="false">
-		    No Supplies
-		</div>
 
-		<textarea ng-model="reportNew.report.content" placeholder="Additional reports"></textarea>
-		<span ng-hide="reportNew.click">All fields must be filled out</span>
-	    <button>Submit</button>
+			<textarea class="report-comment" ng-model="reportNew.report.content" placeholder="Comments"></textarea>
+			<button class="submit-button" ng-class="{'clickable': reportNew.click}">Submit</button>
+			<div class="unanswered" ng-hide="reportNew.click">All questions must be answered</div>
+		    
+		</div>
  	</form>
   </div>
   <button class="modal-close" ng-click="reportNew.gotoList()"></button>

@@ -21,12 +21,11 @@ function ReportListController (OwnerService, $state, $timeout, $rootScope) {
 	  		vm.reportsArray[index].day = element.getDate();
 	  	})
 		// get data
-		let timeoutId =  $timeout(function(){
+		let timeoutId = $timeout(function(){
 							vm.loading=true;
 							}, 1000);
 	  	OwnerService.getAllReports().then((resp) => {
 	  		$timeout.cancel(timeoutId);
-	  		console.log(resp.data)
 	  		vm.loading=false;
 	  		vm.storedReports = resp.data
 	  		vm.reportsArray.forEach(function(arrayElement){
@@ -48,7 +47,6 @@ function ReportListController (OwnerService, $state, $timeout, $rootScope) {
 
 
 	$rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState) =>{
-	    console.log(toState.name)
 	    if (fromState.name == "root.reports.newReport"){
 	    	init();
 	   	}

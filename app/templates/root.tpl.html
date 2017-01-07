@@ -7,11 +7,11 @@
 		<a href="#/home"><span>Welcome</span></a>
 		<a href="#/reports"><span>Reports</span></a>
 		<a href="#/owners"><span>Owners</span></a>
-		<a href="#/schedule"><span>Schedule</span></a>
+		<!-- <a href="#/schedule"><span>Schedule</span></a> -->
 		<a href="#/owners/new"><span ng-show="root.admin">Add Owner</span></a>
 	</span>
 	<span id="right-nav">
-		<span ng-hide="root.loggedIn"><a href="#/login">Login</a></span>
+		<span ng-hide="root.loggedIn" ng-click="root.openLogin()">Login</span>
 		<span ng-show="root.loggedIn">Logged in as:</span>
 		<span ng-show="root.loggedIn">{{root.username}}</span>
 		<span ng-show="root.loggedIn" ng-click="root.logout()">Logout</span>
@@ -19,3 +19,13 @@
 </nav>
 
 <div class="root-container" ui-view></div>
+
+<div class="modal" ng-class= "{'is-active': root.logOpen}">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+  	<input type="text" placeholder="username" ng-model="owner.username">
+	<input type="password" placeholder="password" ng-model="owner.password">
+	<button ng-click="root.login(owner)">Submit</button>
+  </div>
+  <button class="modal-close" ng-click="root.closeLogin()"></button>
+</div>

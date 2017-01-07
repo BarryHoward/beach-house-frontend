@@ -13,7 +13,6 @@ import {OwnerNewController} from './controllers/ownerNew'
 import {ReportNewController} from './controllers/reportNew'
 import {ReportListController} from './controllers/reportList'
 
-import {LoginController} from './controllers/login'
 import {OwnerService} from './services/owner';
 
 
@@ -21,7 +20,6 @@ angular
   .module('app', ['ngCookies', 'ui.router'])
   .config(routerConfig)
   .controller('RootController', RootController)
-  .controller('LoginController', LoginController)
   .controller('OwnerInfoController', OwnerInfoController)
   .controller('OwnerListController', OwnerListController)
   .controller('OwnerNewController', OwnerNewController)

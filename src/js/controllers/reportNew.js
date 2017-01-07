@@ -1,6 +1,6 @@
 import 'datejs';
 
-function ReportNewController ($state, $stateParams, OwnerService) {
+function ReportNewController ($state, $stateParams, OwnerService, $scope) {
   let vm = this;
 
   vm.newReport = newReport;
@@ -10,23 +10,24 @@ function ReportNewController ($state, $stateParams, OwnerService) {
 
 	function init(){
 		if(!OwnerService.isLoggedIn()){
-			$state.go('root.login');
-		}
-		vm.submit = "is-danger";
-		vm.click = false;
-		vm.date = Date.parse($stateParams.date)
-		vm.report = {};
-  		vm.report.month = vm.date.getShortMonthName();
-  		vm.report.year = vm.date.getFullYear();
-  		vm.report.day = vm.date.getDate();
+			$scope.$parent.$parent.root.logOpen = true;
+			$state.go('root.reports');
+		} else{
+			vm.submit = "is-danger";
+			vm.click = false;
+			vm.date = Date.parse($stateParams.date)
+			vm.report = {};
+	  		vm.report.month = vm.date.getShortMonthName();
+	  		vm.report.year = vm.date.getFullYear();
+	  		vm.report.day = vm.date.getDate();
 
-  		OwnerService.getReport($stateParams.date).then((resp) => {
-  			console.log(resp.data)
-  			vm.report = resp.data;
-  			vm.totalCheck();
-  		}, (reject) =>{
-  			console.log(reject)
-  		})
+	  		OwnerService.getReport($stateParams.date).then((resp) => {
+	  			vm.report = resp.data;
+	  			vm.totalCheck();
+	  		}, (reject) =>{
+	  			console.log(reject)
+	  		})
+	  	}
 
 	}
 
@@ -80,5 +81,5 @@ function ReportNewController ($state, $stateParams, OwnerService) {
 
 };
 
-ReportNewController.$inject = ['$state', '$stateParams', 'OwnerService'];
+ReportNewController.$inject = ['$state', '$stateParams', 'OwnerService', '$scope'];
 export {ReportNewController};

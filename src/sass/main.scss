@@ -1,5 +1,10 @@
 @import "bulma";
 
+
+p {
+    text-indent: 20px;
+}
+
 * {
 	box-sizing: border-box;
 }
@@ -127,6 +132,10 @@ nav {
 	justify-content: space-around;
 	align-items: center;
 	font-size: 18pt;
+
+	span{
+		padding: 0px 5px;
+	}
 }
 
 .report-top{
@@ -199,3 +208,59 @@ nav {
 	}
 }
 
+.radios-container{
+	display: flex;
+	flex-direction: column;
+	flex: 0 0 70px;
+	align-items: flex-start;
+	border-left: 1px solid lightgrey;
+	padding-left: 15px;
+	justify-content: center;
+
+}
+
+.true-false-single{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 15px 0px;
+	width: 100%;
+}
+
+.prompt{
+	padding-right: 15px;
+}
+
+.report-comment{
+	width: 100%;
+	padding: 5px;
+	border-radius: 10px;
+	border: 1px solid lightgrey;
+	// margin: 10px;
+}
+
+.new-report-container{
+	padding: 0px 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.unanswered{
+	color: red;
+}
+
+.submit-button{
+		margin: 15px 0px;
+		height: 40px;
+		border: none;
+		border-radius: 10px;
+		color: white;
+		font-size: 12pt;
+		font-weight: bolder;
+		padding: 0px 20px;
+}
+
+.clickable{
+	background: #23D160;
+}
