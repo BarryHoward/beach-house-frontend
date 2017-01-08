@@ -69,6 +69,10 @@ nav {
 
 
 //  Reports
+.modal-content{
+	-webkit-overflow-scrolling: touch;
+}
+
 .report-container{
 	display: flex;
 	flex-direction: column;
@@ -105,6 +109,7 @@ nav {
 	border: 1px solid lightgrey;
 	border-radius: 10px;
 	height: 100px;
+	min-width: 450px;
 }
 
 .bottom-open{
