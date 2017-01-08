@@ -1,5 +1,5 @@
 <div id="pic-banner">
-	<img src="images/banner-pic.png">
+	<img src="images/dolphin-watch.png">
 </div>
 
 <nav>
@@ -22,10 +22,14 @@
 
 <div class="modal" ng-class= "{'is-active': root.logOpen}">
   <div class="modal-background"></div>
-  <div class="modal-content">
-  	<input type="text" placeholder="username" ng-model="owner.username">
-	<input type="password" placeholder="password" ng-model="owner.password">
-	<button ng-click="root.login(owner)">Submit</button>
+  <div class="modal-content modal-login">
+  	<div class="login-container">
+  		<div class="modal-title">Login</div>
+	  	<input type="text" placeholder="username" ng-model="owner.username">
+		<input type="password" placeholder="password" ng-model="owner.password">
+		<button class="submit-button clickable" ng-click="root.login(owner)">Submit</button>
+		<div class="unanswered" ng-show="root.wrong">{{root.wrongText}}</div>
+	</div>
   </div>
   <button class="modal-close" ng-click="root.closeLogin()"></button>
 </div>

@@ -8,6 +8,8 @@ function RootController (OwnerService, $rootScope) {
 	vm.closeLogin = closeLogin;
 	vm.login = login;
 	vm.logOpen = false;
+    vm.wrong =false;
+    vm.wrongText ="";
 
 
 	$rootScope.$on('loginChange', (event, data) => {
@@ -34,8 +36,11 @@ function RootController (OwnerService, $rootScope) {
 	  		OwnerService.setOwner(resp.data);
 	        $rootScope.$broadcast('loginChange', {});
 	        vm.logOpen = false;
+	        vm.wrong =false;
+	        vm.wrongText ="";
 	  	}, (reject) => {
-	      console.log("Wrong Username or password")
+	  		vm.wrong = true;
+	      	vm.wrongText = reject.data.text;
 	    })
   	}
 }
