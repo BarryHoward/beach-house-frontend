@@ -33,14 +33,21 @@ textarea {
 }
 
 #pic-banner{
-	margin: -5px 0px;
+	display: block;
+	box-sizing: border-box;
+	margin: 0px;
 	padding: 0px;
 	min-width: 700px;
+	height: auto;
 	overflow-x: hidden;
 	overflow-y: hidden;
+	border: none;
 	img{
+		display: block;
 		width: 100%;
 		height: 100%;
+		margin: 0px;
+		padding: 0px;
 	}
 }
 
@@ -69,9 +76,6 @@ nav {
 
 
 //  Reports
-.modal-content{
-	-webkit-overflow-scrolling: touch;
-}
 
 .report-container{
 	display: flex;
