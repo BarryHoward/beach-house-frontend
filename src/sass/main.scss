@@ -20,6 +20,7 @@ p {
 	background: #E6DECA;
 	width: 100%;
 	min-height: 100vh;
+	margin: 0px;
 }
 
 a {
@@ -32,7 +33,7 @@ textarea {
 }
 
 #pic-banner{
-	margin: -5px;
+	margin: -5px 0px;
 	padding: 0px;
 	min-width: 700px;
 	overflow-x: hidden;
