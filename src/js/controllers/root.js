@@ -10,7 +10,7 @@ function RootController (OwnerService, $rootScope) {
 	vm.logOpen = false;
     vm.wrong =false;
     vm.wrongText ="";
-
+    vm.imageLoad=false;
 
 	$rootScope.$on('loginChange', (event, data) => {
 		vm.loggedIn = OwnerService.isLoggedIn();
@@ -18,6 +18,38 @@ function RootController (OwnerService, $rootScope) {
 		vm.username = OwnerService.username();
 	});
 
+	function init(){
+		setTimeout(function(){
+			safeApply(function() {
+  				vm.imageLoad = true;
+  			});
+		}, 10)
+	}
+
+	init();
+
+	function safeApply(fn) {
+	    var phase = $rootScope.$$phase;
+	    if(phase == '$apply' || phase == '$digest') {
+	      if(fn && (typeof(fn) === 'function')) {
+	        fn();
+	      }
+	    } else {
+	      $rootScope.$apply(fn);
+	    }
+	  };
+
+	//fade in effect
+	// var image=document.getElementById('banner-img');
+	// console.log(image)
+	// image.onload = function (){
+	// 	console.log(vm.imageLoad)
+	// 	vm.imageLoad = true;
+	// 	console.log(vm.imageLoad)
+	// }
+	// console.log(image)
+
+	// -----------------
 	function logout(){
 	  	OwnerService.logout()
 	    $rootScope.$broadcast('loginChange', {});
