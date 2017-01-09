@@ -3,3 +3,10 @@
 <div ng-repeat="o in ownList.owners">
 	<span>{{ o.username }}</span>
 </div>
+
+<div class="modal" ng-class="{'is-active': ownList.loading}" >
+  <div class="modal-background"></div>
+  <div class="modal-content" id="modal-loading">
+  	<img src="images/load.gif">
+  </div>
+</div>

@@ -6,6 +6,7 @@ function ReportListController (OwnerService, $state, $timeout, $rootScope) {
   	vm.toggleComment = toggleComment;
   	vm.deleteReport = deleteReport;
   	vm.loading=false;
+  	vm.deleteCheck = false;
 
 	function init() {
 		// get previous sundays
@@ -73,10 +74,12 @@ function ReportListController (OwnerService, $state, $timeout, $rootScope) {
 		return sunArray;
 	}
 
-	function deleteReport(report){
+	function deleteReport(){
+
+		let report = vm.report;
 		OwnerService.deleteReport(report.id).then((resp) => {
 				report.exist = false;
-				console.log(resp.data)
+				vm.deleteCheck=false;
 			}, (reject) => {
 				console.log(reject)
 			})
