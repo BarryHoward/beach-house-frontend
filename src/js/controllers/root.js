@@ -1,4 +1,4 @@
-function RootController (OwnerService, $rootScope) {
+function RootController (OwnerService, $rootScope, $state) {
 	let vm = this;
 	vm.admin = OwnerService.isAdmin();
 	vm.loggedIn = OwnerService.isLoggedIn();
@@ -18,12 +18,18 @@ function RootController (OwnerService, $rootScope) {
 		vm.username = OwnerService.username();
 	});
 
+	$rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState) =>{
+		vm.state = toState.name;
+  	})
+
 	function init(){
 		setTimeout(function(){
 			safeApply(function() {
   				vm.imageLoad = true;
   			});
 		}, 10)
+
+		vm.state = $state.current.name;
 	}
 
 	init();
@@ -77,5 +83,5 @@ function RootController (OwnerService, $rootScope) {
   	}
 }
 
- RootController.$inject = ['OwnerService', '$rootScope'];
+ RootController.$inject = ['OwnerService', '$rootScope', '$state'];
  export {RootController};

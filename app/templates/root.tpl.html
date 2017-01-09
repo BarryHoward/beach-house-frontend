@@ -1,20 +1,19 @@
 <div id="pic-banner">
-	<img id="banner-img" ng-class="{'visible': root.imageLoad}" src="images/dolphin-banner-pic.png"></img>
+	<img id="banner-img" ng-class="{'visible': root.imageLoad}" src="images/banner-d3.png"></img>
 </div>
 
 <nav>
 	<span id="left-nav">
-		<a href="#/home"><span>Welcome</span></a>
-		<a href="#/reports"><span>Reports</span></a>
-		<a href="#/owners"><span>Owners</span></a>
+		<a href="#/home"><button ng-class="{'yellow': root.state==='root.home'}" class="nav-button">Welcome</button></a>
+		<a href="#/reports"><button ng-class="{'yellow': root.state==='root.reports'}" class="nav-button">Reports</button></a>
+		<a href="#/owners"><button ng-class="{'yellow': root.state==='root.owners'}" class="nav-button">Owners</button></a>
 		<!-- <a href="#/schedule"><span>Schedule</span></a> -->
-		<a href="#/owners/new"><span ng-show="root.admin">Add Owner</span></a>
+		<a href="#/owners/new"><button ng-class="{'yellow': root.state==='root.ownerNew'}" class="nav-button" ng-show="root.admin">Add Owner</button></a>
 	</span>
 	<span id="right-nav">
-		<span ng-hide="root.loggedIn" ng-click="root.openLogin()">Login</span>
-		<span ng-show="root.loggedIn">Logged in as:</span>
-		<span ng-show="root.loggedIn">{{root.username}}</span>
-		<span ng-show="root.loggedIn" ng-click="root.logout()">Logout</span>
+		<button class="nav-button" ng-hide="root.loggedIn" ng-click="root.openLogin()">Login</button>
+		<button class="nav-button" ng-show="root.loggedIn">{{root.username}}</button>
+		<button class="nav-button" ng-show="root.loggedIn" ng-click="root.logout()">Logout</button>
 	</span>
 </nav>
 

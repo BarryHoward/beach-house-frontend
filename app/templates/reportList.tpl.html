@@ -1,11 +1,14 @@
-<div class="page-title"> Reports </div>
+<!-- <div class="page-title"> Reports </div> -->
 
 <div ng-repeat="report in reportList.reportsArray" class="report-container"  >
-	<div class="report-top" ng-show="report.exist" ng-click="reportList.toggleComment(report)">
+	<div class="report-top" ng-show="report.exist">
 		<div class="report-date report-left">
+
 			<div class="date-month"><span>{{report.month}}</span><span>{{report.day}}</span></div>
 			<div class="date-week">{{report.year}}</div>
 		</div>
+		<i ng-hide="report.clicked" class="fa fa-arrow-down" aria-hidden="true" ng-click="reportList.toggleComment(report)"></i>
+		<i ng-show="report.clicked" class="fa fa-arrow-up" aria-hidden="true" ng-click="reportList.toggleComment(report)"></i>
 		<div class="check-container report-right">
 			<div class="check-box">Clean
 				<span ng-show="report.clean"><i class="fa-2x fa fa-check-circle" aria-hidden="true"></i></span>
@@ -44,8 +47,12 @@
 				<i class="fa-2x fa fa-times"></i>
 			</button>
 		</div>
-		<div class="comment report-right">
-			<span>{{report.content}}</span>
+		<div class= "report-right">
+			<div class="comment">{{report.content}}</div>
+			<div class="update-by">
+				<div class="update-text">Last Update By:</div>
+				<div class="username-text">{{report.username}}</div>
+			</div>
 		</div>
 	</div>
 
@@ -54,7 +61,11 @@
 			<div class="date-month"><span>{{report.month}}</span><span>{{report.day}}</span></div>
 			<div class="date-week">{{report.year}}</div>
 		</div>
-		<button ng-click="reportList.gotoSingle(report)" ng-hide="report.exist" class="report-right report-empty">Add a Report!</button>
+		<button ng-click="reportList.gotoSingle(report)" ng-hide="report.exist" class="report-right report-empty">
+			<div class="add-report">
+				Add a Report!
+			</div>
+		</button>
 	</div>
 </div>
 
