@@ -12,7 +12,10 @@ function OwnerListController (OwnerService, $timeout) {
 	  		$timeout.cancel(timeoutId);
 	  		vm.owners = resp.data
 	  		vm.loading=false;
-	  	});
+		  	}, (reject) => {
+		  	$timeout.cancel(timeoutId);
+		  	vm.loading=false;
+		});
   	}
 
   	init();

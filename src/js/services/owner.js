@@ -9,11 +9,13 @@ function OwnerService ($http, $cookies) {
   vm.isLoggedIn = isLoggedIn;
   vm.isAdmin = isAdmin;
   vm.username = username;
+  vm.userId = userId;
   vm.setOwner = setOwner;
   vm.logout = logout;
   vm.getHeaders = getHeaders;
   vm.getAllOwners = getAllOwners;
   vm.newOwner = newOwner;
+  vm.getOwner = getOwner;
   vm.newReport = newReport;
   vm.getAllReports = getAllReports;
   vm.getReport = getReport;
@@ -50,13 +52,19 @@ function OwnerService ($http, $cookies) {
     return $cookies.get('username');
   }
 
+  function userId(){
+    return $cookies.get('userId');
+  }
+
   function logout () {
+    $cookies.remove('userId');
     $cookies.remove('username');
     $cookies.remove('access_token');
     $cookies.remove('admin');
   }
 
   function setOwner (data) {
+    $cookies.put('userId', data.id);
     $cookies.put('username', data.username);
     $cookies.put('access_token', data.access_token);
     $cookies.put('admin', data.admin);
@@ -69,7 +77,7 @@ function OwnerService ($http, $cookies) {
   }
 
   function getOwner (id) {
-    return $http.get(`${SERVER}/owners/${id}`)
+    return $http.get(`${SERVER}owners/${id}`)
   }
 
   function getAllOwners (){

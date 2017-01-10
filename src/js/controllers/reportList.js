@@ -40,6 +40,7 @@ function ReportListController (OwnerService, $state, $timeout, $rootScope) {
 	  		})
 	  	}, (reject) =>{
 	  		vm.loading=false;
+	  		$timeout.cancel(timeoutId);
 	  		console.log(reject)
 	  	});
   	}

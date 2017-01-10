@@ -3,6 +3,7 @@ function RootController (OwnerService, $rootScope, $state) {
 	vm.admin = OwnerService.isAdmin();
 	vm.loggedIn = OwnerService.isLoggedIn();
 	vm.username = OwnerService.username();
+	vm.userId = OwnerService.userId();
 	vm.logout = logout;
 	vm.openLogin = openLogin;
 	vm.closeLogin = closeLogin;
@@ -16,6 +17,7 @@ function RootController (OwnerService, $rootScope, $state) {
 		vm.loggedIn = OwnerService.isLoggedIn();
 		vm.admin = OwnerService.isAdmin();
 		vm.username = OwnerService.username();
+		vm.userId = OwnerService.userId();
 	});
 
 	$rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState) =>{

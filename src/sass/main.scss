@@ -324,10 +324,18 @@ nav {
 
 .update-button{
 	background: #55ACC4;
+
+	&:hover{
+		background: #60BDD6;
+	}
 }
 
 .delete-button{
 	background: #b70000;
+
+	&:hover{
+		background: red;
+	}
 }
 
 

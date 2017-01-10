@@ -1,12 +1,24 @@
-function OwnerInfoController (OwnerService, $stateParams, $state) {
+function OwnerInfoController (OwnerService, $stateParams, $state, $timeout) {
 	let vm = this;
 
+  vm.loading=false;
+
 	function init(){
-	    OwnerService.getOwner($stateParams.id).then((resp) => {
-	  		vm.owner = resp.data
+    let timeoutId = $timeout(function(){
+          vm.loading=true;
+          }, 1000);
+    OwnerService.getOwner($stateParams.id).then((resp) => {
+        $timeout.cancel(timeoutId);
+        vm.owner = resp.data
+        console.log(vm.owner)
+        vm.loading=false;
+      }, (reject) => {
+        $timeout.cancel(timeoutId);
+        vm.loading=false;
 	  	});
 	}
 	init();
+
 
   	// function deleteOwner($stateParams.id) {
   	// 	OwnerService.deleteContact(id).then((resp) => {
@@ -20,5 +32,5 @@ function OwnerInfoController (OwnerService, $stateParams, $state) {
 
 };
 
-OwnerInfoController.$inject = ['OwnerService', '$stateParams', '$state'];
+OwnerInfoController.$inject = ['OwnerService', '$stateParams', '$state', '$timeout'];
 export {OwnerInfoController};
