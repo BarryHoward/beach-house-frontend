@@ -52,13 +52,12 @@ textarea {
 	box-sizing: border-box;
 	margin: 0px;
 	padding: 0px;
-	min-width: 700px;
 	height: auto;
 	overflow-x: hidden;
 	overflow-y: hidden;
 	border: none;
 	img{
-
+		min-width: 700px;
 		width: 100%;
 		height: 100%;
 		margin: 0px;
@@ -519,4 +518,56 @@ nav {
 	#no-button{
 		background: grey;
 	}
+}
+
+.owner-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	border: 1px solid black;
+	background: white;
+	padding: 20px;
+	margin: 20px;
+	min-height: 150px;
+	overflow: hidden;
+	box-shadow: 0px 0px 4px 2px black;
+}
+
+.person-container{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: 1px solid black;
+	background: white;
+	padding: 20px;
+	margin: 20px;
+	width: 80%;
+	overflow: hidden;
+	box-shadow: 0px 0px 4px 2px black;
+	border-radius: 10px;
+}
+
+.person-name-container{
+
+}
+
+.person-info-container{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	width: 100%;
+	flex-wrap: wrap;
+}
+
+.person-address-container{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.person-contact-container{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }

@@ -1,5 +1,55 @@
-<h1>Owner Info</h1>
+<!-- <form ng-submit="ownInfo.updateOwner(ownInfo.owner)"> -->
+	<div class="owner-container">
+		<div class="owner-header">
+			<div class="input-container">
+				<input placeholder="username" type="text" ng-model="ownInfo.owner.username">
+			</div>
 
+			<div class="input-container">
+				<input placeholder="interval_1" type="text" ng-show="root.admin" ng-model="ownInfo.owner.interval_1">
+				<span ng-hide="root.admin">{{ownInfo.owner.interval_1}}</span>
+			</div>
+
+			<div class="input-container">
+				<input placeholder="interval_2" type="text" ng-show="root.admin" ng-model="ownInfo.owner.interval_2">
+				<span ng-hide="root.admin">{{ownInfo.owner.interval_2}}</span>
+			</div>
+
+			<div class="input-container">
+				<input placeholder="interval_3" type="text" ng-show="root.admin" ng-model="ownInfo.owner.interval_3">
+				<span ng-hide="root.admin">{{ownInfo.owner.interval_3}}</span>
+			</div>
+		</div>
+
+		<div ng-repeat="person in ownInfo.people" class="person-container">
+			<div class="person-name-container">
+				<input placeholder="first name" type="text" ng-model="person.first_name">
+				<input placeholder="middle name" type="text" ng-model="person.middle_name">
+				<input placeholder="last name" type="text" ng-model="person.last_name">
+			</div>
+			<div class="person-info-container">
+				<div class="person-address-container">
+					Address
+					<input placeholder="address" type="text" ng-model="person.address">
+					<input placeholder="city" type="text" ng-model="person.city">
+					<input placeholder="state" type="text" ng-model="person.state">
+				</div>
+				<div class="person-contact-container">
+					Contact
+					<input placeholder="cell phone" type="tel" ng-model="person.cell_phone">
+					<input placeholder="home phone" type="tel" ng-model="person.home_phone">
+					<input placeholder="email" type="email" ng-model="person.email">
+				</div>
+			</div>
+			<button class="delete-button submit-button" ng-click="ownInfo.deletePerson(person)">Delete Contact</button>
+		</div>
+		<button class="report-empty" ng-click="ownInfo.people.push({})">Add New Contact</button>
+		<button class="update-button submit-button"ng-click="ownInfo.updateOwner(ownInfo.owner)">Submit</button>
+	</div>
+
+	<!-- <input type="file" accept="image/*"> -->
+
+<!-- </form> -->
 
 
 <div class="modal" ng-class="{'is-active': ownInfo.loading}" >

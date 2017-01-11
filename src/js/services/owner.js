@@ -16,10 +16,12 @@ function OwnerService ($http, $cookies) {
   vm.getAllOwners = getAllOwners;
   vm.newOwner = newOwner;
   vm.getOwner = getOwner;
+  vm.updateOwner = updateOwner;
   vm.newReport = newReport;
   vm.getAllReports = getAllReports;
   vm.getReport = getReport;
   vm.deleteReport = deleteReport;
+  vm.deletePerson = deletePerson;
 
 
 
@@ -88,6 +90,16 @@ function OwnerService ($http, $cookies) {
     return $http.get(`${SERVER}comments`)
   }
 
+  function updateOwner(owner){
+    let req = {
+      url: `${SERVER}owners/${owner.id}`,
+      data: owner,
+      method: 'PATCH', 
+      headers: vm.getHeaders()
+    }
+    return $http(req)
+  }
+
   function getReport(date){
     return $http.get(`${SERVER}comments/${date}`)
   }
@@ -122,6 +134,15 @@ function OwnerService ($http, $cookies) {
   function deleteReport (id){
     let req = {
       url: `${SERVER}comments/${id}`,
+      method: 'DELETE',
+      headers: vm.getHeaders()
+    };
+    return $http(req);
+  }
+
+  function deletePerson (id){
+    let req = {
+      url: `${SERVER}people/${id}`,
       method: 'DELETE',
       headers: vm.getHeaders()
     };
