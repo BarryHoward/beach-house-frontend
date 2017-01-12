@@ -30,6 +30,7 @@ function OwnerInfoController (OwnerService, $stateParams, $state, $timeout) {
     console.log(owner)
     OwnerService.updateOwner(owner).then((resp)=>{
       console.log(resp)
+      init();
     }, (reject)=>{
       console.log(reject)
     })

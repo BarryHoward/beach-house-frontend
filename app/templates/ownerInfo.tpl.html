@@ -20,28 +20,29 @@
 				<span ng-hide="root.admin">{{ownInfo.owner.interval_3}}</span>
 			</div>
 		</div>
-
-		<div ng-repeat="person in ownInfo.people" class="person-container">
-			<div class="person-name-container">
-				<input placeholder="first name" type="text" ng-model="person.first_name">
-				<input placeholder="middle name" type="text" ng-model="person.middle_name">
-				<input placeholder="last name" type="text" ng-model="person.last_name">
-			</div>
-			<div class="person-info-container">
-				<div class="person-address-container">
-					Address
-					<input placeholder="address" type="text" ng-model="person.address">
-					<input placeholder="city" type="text" ng-model="person.city">
-					<input placeholder="state" type="text" ng-model="person.state">
+		<div class="people-container">
+			<div ng-repeat="person in ownInfo.people" class="person-container">
+				<div class="person-name-container">
+					<input placeholder="first" type="text" ng-model="person.first_name">
+					<input placeholder="middle" type="text" ng-model="person.middle_name">
+					<input placeholder="last" type="text" ng-model="person.last_name">
 				</div>
-				<div class="person-contact-container">
-					Contact
-					<input placeholder="cell phone" type="tel" ng-model="person.cell_phone">
-					<input placeholder="home phone" type="tel" ng-model="person.home_phone">
-					<input placeholder="email" type="email" ng-model="person.email">
+				<div class="person-info-container">
+					<div class="person-contact-container">
+						<div class="modal-title">Contact</div>
+						<input placeholder="cell phone" type="tel" ng-model="person.cell_phone">
+						<input placeholder="home phone" type="tel" ng-model="person.home_phone">
+						<input placeholder="email" type="email" ng-model="person.email">
+					</div>
+					<div class="person-address-container">
+						<div class="modal-title">Address</div>
+						<input placeholder="address" type="text" ng-model="person.address">
+						<input placeholder="city" type="text" ng-model="person.city">
+						<input placeholder="state" type="text" ng-model="person.state">
+					</div>
 				</div>
+				<button class="delete-button submit-button" ng-click="ownInfo.deletePerson(person)">Delete Contact</button>
 			</div>
-			<button class="delete-button submit-button" ng-click="ownInfo.deletePerson(person)">Delete Contact</button>
 		</div>
 		<button class="report-empty" ng-click="ownInfo.people.push({})">Add New Contact</button>
 		<button class="update-button submit-button"ng-click="ownInfo.updateOwner(ownInfo.owner)">Submit</button>

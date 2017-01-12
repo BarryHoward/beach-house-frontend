@@ -33,9 +33,12 @@ p {
 .root-container {
 	padding: 20px;
 	background: #E6DECA;
+	// background-image: url("http://eskipaper.com/images/white-sand-background-1.jpg");
+	// background-size: cover;
 	width: 100%;
 	min-height: 100vh;
 	margin: 0px;
+	box-shadow: inset 0px 6px 10px -4px black;
 }
 
 a {
@@ -116,13 +119,6 @@ nav {
 			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#73bfd4', endColorstr='#3d95ae', GradientType=0 );
 		}
 
-		// &:focus{
-		// 	color: yellow;
-		// }
-
-		// &:last-child{
-		// 	border: none;
-		// }
 	}
 
 	.yellow{
@@ -146,7 +142,7 @@ nav {
 	min-height: 150px;
 	min-width: 680px;
 	overflow: hidden;
-	box-shadow: 0px 0px 4px 2px black;
+	box-shadow: 2px 2px 4px 2px black;
 }
 .report-empty{
 	background: #E6DECA;
@@ -155,7 +151,7 @@ nav {
 	border: none;
 	color: grey;
 	font-size: 20pt;
-	box-shadow: 0px 0px 5px 1px black;
+	box-shadow: 2px 2px 5px 1px black;
 	height: 100%;
 
 	&:hover{
@@ -445,6 +441,7 @@ nav {
 
 	input{
 		margin-bottom: 10px;
+		padding: 0px 5px;
 		width: 90%;
 	}
 
@@ -475,7 +472,7 @@ nav {
 }
 
 .home-container{
-	box-shadow: 0px 0px 10px 2px black;
+	box-shadow: 2px 2px 10px 2px black;
 	background: white;
 	margin: 20px auto;
 	padding: 30px;
@@ -487,12 +484,19 @@ nav {
 }
 
 #left-nav{
-	width: 60%;
 	margin-left: 40px;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	flex-wrap: wrap;
 }
 
 #right-nav{
 	margin-right: 40px;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	flex-wrap: wrap;
 }
 
 .yes-no-buttons{
@@ -523,51 +527,84 @@ nav {
 .owner-container{
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: flex-start;
 	align-items: center;
 	border: 1px solid black;
 	background: white;
 	padding: 20px;
-	margin: 20px;
-	min-height: 150px;
+	margin: 20px 20px;
 	overflow: hidden;
-	box-shadow: 0px 0px 4px 2px black;
+	box-shadow: 2px 2px 4px 2px black;
+	font-size: 12pt;
+	// max-width: 800px;
+
+	input{
+		border-radius: 10px;
+		padding: 0px 10px;
+		outline: 0;
+	}
+}
+
+.people-container{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	flex-wrap: wrap;
 }
 
 .person-container{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	border: 1px solid black;
+	border: 1px solid grey;
 	background: white;
-	padding: 20px;
+	// padding: 20px;
 	margin: 20px;
-	width: 80%;
+	// max-width: 700px;
 	overflow: hidden;
-	box-shadow: 0px 0px 4px 2px black;
+	box-shadow: 0px 0px 2px 1px black;
 	border-radius: 10px;
 }
 
 .person-name-container{
+	input{
+		width: 100px;
+		margin: 5px;
+	}
 
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	align-items: center;
+	width: 100%;
+	background: #DCEEF3;
+	font-size: 16pt;
+	padding: 10px;
+	border-bottom: 2px solid lightgrey;
 }
 
 .person-info-container{
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
+	justify-content: center;
 	width: 100%;
 	flex-wrap: wrap;
 }
 
-.person-address-container{
+.person-address-container, .person-contact-container{
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	align-items: flex-start;
+	justify-content: flex-start;
+	border: 1px solid grey;
+	border-radius: 10px;
+	overflow: hidden;
+	padding: 10px;
+	margin: 10px;
+
+	.info-title{
+		font-size: 14pt;
+		padding-bottom: 10px;
+	}
 }
 
-.person-contact-container{
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
