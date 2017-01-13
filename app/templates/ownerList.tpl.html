@@ -1,8 +1,51 @@
-<div class="page-title"> Owners List (work in progress)</div>
-
-<div ng-repeat="o in ownList.owners">
-	<span>{{ o.username }}</span>
+<div ng-show="root.admin" class="owner-links">
+	<div ng-repeat="interval in ownList.intArray">
+		<a href="#/owners/{{interval.owner.id}}">{{interval.owner.username}}</a>
+	</div>
 </div>
+
+<div ng-repeat="interval in ownList.intArray" class="owner-container">
+	<div class="owner-header">
+		<div class="interval-box">
+			<span>{{ownList.OwnerService.numRoman(interval.interval)}}</span>
+		</div>
+
+		<i ng-hide="interval.clicked" class="fa fa-arrow-down" aria-hidden="true" ng-click="interval.clicked=true"></i>
+		<i ng-show="interval.clicked" class="fa fa-arrow-up" aria-hidden="true" ng-click="interval.clicked=false"></i>
+
+		<div class="owner-username-container">
+			<span>{{interval.owner.username}}</span>
+		</div>
+	</div>
+	<div class="people-container" ng-class="{'bottom-open': interval.clicked, 'bottom-closed': !interval.clicked}" >
+		<div ng-repeat="person in interval.owner.people" class="person-container">
+			<div class="person-name-container">
+				<span>{{person.first_name}} {{person.middle_name}} {{person.last_name}} 
+			</div>
+			<div class="person-info-container">
+				<div class="person-contact-container">
+					<div class="modal-title">Contact</div>
+					<label ng-show="person.cell_phone">Cell Phone </label>
+					<div class="contact-item">{{person.cell_phone}}</div>
+					<label ng-show="person.home_phone">Home Phone </label>
+					<div class="contact-item">{{person.home_phone}} </div>
+					<label ng-show="person.email">Email </label>
+					<div class="contact-item">{{person.email}}</div>
+				</div>
+				<div class="person-address-container">
+					<div class="modal-title">Address</div>
+					<div class="contact-item"> {{person.address}}</div>
+					<div class="contact-item"> {{person.city}} </div>
+					<div class="contact-item"> {{person.state}} </div>
+					<div class="contact-item"> {{person.zip_code}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
+
+
 
 <div class="modal" ng-class="{'is-active': ownList.loading}" >
   <div class="modal-background"></div>

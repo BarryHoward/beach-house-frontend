@@ -3,9 +3,8 @@
 <div ng-repeat="report in reportList.reportsArray" class="report-container"  >
 	<div class="report-top" ng-show="report.exist">
 		<div class="report-date report-left">
-
-			<div class="date-month"><span>{{report.month}}</span><span>{{report.day}}</span></div>
-			<div class="date-week">{{report.year}}</div>
+			<div class="date-month"><span>{{report.month}}</span><span>{{report.year}}</span></div>
+			<div class="date-day">{{report.day}}</div>
 		</div>
 		<i ng-hide="report.clicked" class="fa fa-arrow-down" aria-hidden="true" ng-click="reportList.toggleComment(report)"></i>
 		<i ng-show="report.clicked" class="fa fa-arrow-up" aria-hidden="true" ng-click="reportList.toggleComment(report)"></i>
@@ -58,8 +57,8 @@
 
 	<div class="report-top" ng-click="reportList.toggleComment(report)" ng-hide="report.exist">
 		<div class="report-date report-left">
-			<div class="date-month"><span>{{report.month}}</span><span>{{report.day}}</span></div>
-			<div class="date-week">{{report.year}}</div>
+			<div class="date-month"><span>{{report.month}}</span><span>{{report.year}}</span></div>
+			<div class="date-day">{{report.day}}</div>
 		</div>
 		<button ng-click="reportList.gotoSingle(report)" ng-hide="report.exist" class="report-right report-empty">
 			<div class="add-report">

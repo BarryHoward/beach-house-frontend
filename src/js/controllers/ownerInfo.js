@@ -4,8 +4,10 @@ function OwnerInfoController (OwnerService, $stateParams, $state, $timeout) {
   vm.loading=false;
   vm.updateOwner = updateOwner;
   vm.deletePerson = deletePerson;
+  vm.OwnerService = OwnerService;
 
 	function init(){
+    console.log(OwnerService.numRoman(5), OwnerService.numRoman(7), OwnerService.numRoman(2) )
     let timeoutId = $timeout(function(){
           vm.loading=true;
           }, 1000);
@@ -42,9 +44,11 @@ function OwnerInfoController (OwnerService, $stateParams, $state, $timeout) {
       vm.people.splice(index, 1);
       console.log(resp)
     }, (reject)=>{
-      var index = vm.people.indexOf(person);
-      vm.people.splice(index, 1);
-      console.log(reject)
+      if (reject.status == 404){
+        var index = vm.people.indexOf(person);
+        vm.people.splice(index, 1);
+        console.log(reject);
+      }
     })
   }
 

@@ -1,23 +1,19 @@
 <!-- <form ng-submit="ownInfo.updateOwner(ownInfo.owner)"> -->
 	<div class="owner-container">
 		<div class="owner-header">
-			<div class="input-container">
-				<input placeholder="username" type="text" ng-model="ownInfo.owner.username">
-			</div>
-
-			<div class="input-container">
+			<div class="interval-box">
 				<input placeholder="interval_1" type="text" ng-show="root.admin" ng-model="ownInfo.owner.interval_1">
-				<span ng-hide="root.admin">{{ownInfo.owner.interval_1}}</span>
-			</div>
-
-			<div class="input-container">
 				<input placeholder="interval_2" type="text" ng-show="root.admin" ng-model="ownInfo.owner.interval_2">
-				<span ng-hide="root.admin">{{ownInfo.owner.interval_2}}</span>
+				<input placeholder="interval_3" type="text" ng-show="root.admin" ng-model="ownInfo.owner.interval_3">
+				<span ng-hide="root.admin || !ownInfo.OwnerService.numRoman(ownInfo.owner.interval_1)">{{ownInfo.OwnerService.numRoman(ownInfo.owner.interval_1)}}</span>
+				<span ng-hide="root.admin || !ownInfo.OwnerService.numRoman(ownInfo.owner.interval_2)">{{ownInfo.OwnerService.numRoman(ownInfo.owner.interval_2)}}</span>
+				<span ng-hide="root.admin || !ownInfo.OwnerService.numRoman(ownInfo.owner.interval_3)">{{ownInfo.OwnerService.numRoman(ownInfo.owner.interval_3)}}</span>
 			</div>
 
-			<div class="input-container">
-				<input placeholder="interval_3" type="text" ng-show="root.admin" ng-model="ownInfo.owner.interval_3">
-				<span ng-hide="root.admin">{{ownInfo.owner.interval_3}}</span>
+			<!-- <button>Change Password</button> -->
+
+			<div class="owner-username-container">
+				<input placeholder="username" type="text" ng-model="ownInfo.owner.username">
 			</div>
 		</div>
 		<div class="people-container">
@@ -26,6 +22,9 @@
 					<input placeholder="first" type="text" ng-model="person.first_name">
 					<input placeholder="middle" type="text" ng-model="person.middle_name">
 					<input placeholder="last" type="text" ng-model="person.last_name">
+					<button class="x-button" ng-click="ownInfo.deletePerson(person)">
+						<i class="fa fa-times" aria-hidden="true"></i>
+					</button>
 				</div>
 				<div class="person-info-container">
 					<div class="person-contact-container">
@@ -39,13 +38,15 @@
 						<input placeholder="address" type="text" ng-model="person.address">
 						<input placeholder="city" type="text" ng-model="person.city">
 						<input placeholder="state" type="text" ng-model="person.state">
+						<input placeholder="zip" type="number" ng-model="person.zip_code">
 					</div>
 				</div>
-				<button class="delete-button submit-button" ng-click="ownInfo.deletePerson(person)">Delete Contact</button>
 			</div>
 		</div>
-		<button class="report-empty" ng-click="ownInfo.people.push({})">Add New Contact</button>
-		<button class="update-button submit-button"ng-click="ownInfo.updateOwner(ownInfo.owner)">Submit</button>
+		<div class="info-buttons">
+		<button class="submit-button" ng-click="ownInfo.people.push({})">Add New Contact</button>
+		<button class="update-button submit-button" ng-click="ownInfo.updateOwner(ownInfo.owner)">Save Changes</button>
+		</div>
 	</div>
 
 	<!-- <input type="file" accept="image/*"> -->
