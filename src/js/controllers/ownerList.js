@@ -1,4 +1,4 @@
-function OwnerListController (OwnerService, $timeout) {
+function OwnerListController (OwnerService, $timeout, $state) {
   	let vm = this;
   	vm.intArray = [];
   	vm.loading=false;
@@ -6,22 +6,26 @@ function OwnerListController (OwnerService, $timeout) {
   	const intNum = 13;
 
 	function init() {
-		let timeoutId = $timeout(function(){
-					vm.loading=true;
-					}, 1000);
-	  	OwnerService.getAllOwners().then((resp) => {
-	  		$timeout.cancel(timeoutId);
-	  		vm.owners = resp.data.user;
-	  		vm.people = resp.data.people;
-	  		vm.loading=false;
+    if(!OwnerService.isLoggedIn()){
+      $state.go('root.home');
+    } else {
+  		let timeoutId = $timeout(function(){
+  					vm.loading=true;
+  					}, 1000);
+  	  	OwnerService.getAllOwners().then((resp) => {
+  	  		$timeout.cancel(timeoutId);
+  	  		vm.owners = resp.data.user;
+  	  		vm.people = resp.data.people;
+  	  		vm.loading=false;
 
-	  		peopleMatch();
-	  		intervalMatch();
+  	  		peopleMatch();
+  	  		intervalMatch();
 
-		  	}, (reject) => {
-		  	$timeout.cancel(timeoutId);
-		  	vm.loading=false;
-		});
+  		  	}, (reject) => {
+  		  	$timeout.cancel(timeoutId);
+  		  	vm.loading=false;
+  		});
+      }
   	}
 
   	init();
@@ -49,5 +53,5 @@ function OwnerListController (OwnerService, $timeout) {
 
 };
 
-OwnerListController.$inject = ['OwnerService', '$timeout'];
+OwnerListController.$inject = ['OwnerService', '$timeout', '$state'];
 export {OwnerListController};

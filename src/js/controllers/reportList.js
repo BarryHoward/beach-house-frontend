@@ -10,7 +10,7 @@ function ReportListController (OwnerService, $state, $timeout, $rootScope) {
 
 	function init() {
 		// get previous sundays
-	  	let sundays = previousSundays(0, 9);
+	  	let sundays = previousSundays(0, 15);
 
 	  	// set array of objects
 	  	vm.reportsArray = [];
