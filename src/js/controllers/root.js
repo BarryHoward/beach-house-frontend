@@ -12,6 +12,7 @@ function RootController (OwnerService, $rootScope, $state) {
     vm.wrong =false;
     vm.wrongText ="";
     vm.imageLoad=false;
+    vm.loading=false;
 
 	$rootScope.$on('loginChange', (event, data) => {
 		vm.loggedIn = OwnerService.isLoggedIn();
@@ -72,15 +73,18 @@ function RootController (OwnerService, $rootScope, $state) {
   	}
 
   	function login(owner){
+  		vm.loading=true;
 	  	OwnerService.login(owner).then((resp) => {
 	  		OwnerService.setOwner(resp.data);
 	        $rootScope.$broadcast('loginChange', {});
 	        vm.logOpen = false;
+	        vm.loading=false;
 	        vm.wrong =false;
 	        vm.wrongText ="";
 	  	}, (reject) => {
 	  		vm.wrong = true;
 	      	vm.wrongText = reject.data.text;
+	      	vm.loading = false;
 	    })
   	}
 }
